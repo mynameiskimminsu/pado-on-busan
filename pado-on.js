@@ -470,17 +470,26 @@
   }
 
   function renderBookings() {
-    var activeCount = bookings.filter(function (booking) { return booking.status !== "cancelled"; }).length;
+    var upcomingBookings = bookings.filter(function (booking) { return booking.status === "reserved"; });
+    var completedBookings = bookings.filter(function (booking) { return booking.status === "completed"; });
+    var activeCount = upcomingBookings.length + completedBookings.length;
     byId("bookingCount").textContent = activeCount + "건";
-    if (bookings.length === 0) {
-      byId("bookingList").innerHTML = '<div class="booking-empty"><span class="empty-icon">' + icon("ticket") + '</span><h4>아직 예약한 바다가 없어요</h4><p>마음에 드는 행사를 예약하면<br>이곳에서 일정과 SEA 포인트를 확인할 수 있어요.</p><a class="button button-dark button-small" href="#events">행사 둘러보기</a></div>';
-      return;
-    }
-    byId("bookingList").innerHTML = bookings.slice(0, 8).map(function (booking) {
+    byId("upcomingBookingCount").textContent = upcomingBookings.length + "건";
+    byId("completedBookingCount").textContent = completedBookings.length + "건";
+
+    function bookingMarkup(booking) {
       var event = getEvent(booking.eventId);
       if (!event) return "";
       return '<article class="booking-item"><img class="booking-thumb" src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.title) + '" loading="lazy" decoding="async"><div class="booking-info"><span>' + escapeHtml(booking.id) + "</span><h4>" + escapeHtml(event.title) + "</h4><p>" + escapeHtml(booking.scheduleLabel) + " · " + Number(booking.quantity || 1) + '명</p></div><div class="booking-actions">' + bookingActions(booking, event) + "</div></article>";
-    }).join("");
+    }
+
+    byId("upcomingBookingList").innerHTML = upcomingBookings.length
+      ? upcomingBookings.slice(0, 8).map(bookingMarkup).join("")
+      : '<div class="booking-group-empty"><span>' + icon("calendar") + '</span><p>참여를 기다리는 예약이 없어요.</p><a href="#events">새 체험 둘러보기</a></div>';
+
+    byId("completedBookingList").innerHTML = completedBookings.length
+      ? completedBookings.slice(0, 8).map(bookingMarkup).join("")
+      : '<div class="booking-group-empty"><span>' + icon("check") + '</span><p>아직 완료한 체험이 없어요.</p></div>';
   }
 
   function renderRewards() {

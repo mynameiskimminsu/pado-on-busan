@@ -247,7 +247,22 @@
             <div><span class="panel-icon"><svg class="icon"><use href="#icon-ticket"></use></svg></span><div><p>MY RESERVATIONS</p><h3 id="bookingTitle">내 예약</h3></div></div>
             <span class="count-badge" id="bookingCount">1건</span>
           </div>
-          <div id="bookingList"></div>
+          <div class="booking-groups" id="bookingList">
+            <section class="booking-group" aria-labelledby="upcomingBookingTitle">
+              <div class="booking-group-heading">
+                <h4 id="upcomingBookingTitle"><span class="booking-group-dot upcoming"></span>참여 전</h4>
+                <span id="upcomingBookingCount">0건</span>
+              </div>
+              <div id="upcomingBookingList"></div>
+            </section>
+            <section class="booking-group" aria-labelledby="completedBookingTitle">
+              <div class="booking-group-heading">
+                <h4 id="completedBookingTitle"><span class="booking-group-dot completed"></span>참여 완료</h4>
+                <span id="completedBookingCount">1건</span>
+              </div>
+              <div id="completedBookingList"></div>
+            </section>
+          </div>
         </section>
 
         <section class="reward-panel" id="rewards" aria-labelledby="rewardTitle">
