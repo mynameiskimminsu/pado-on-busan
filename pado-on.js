@@ -214,6 +214,48 @@
       schedules: [{ value: "2026-09-26T17:00", label: "2026년 9월 26일 (토) 17:00" }],
       description: "선선한 가을 바다와 함께 지역 뮤지션의 공연을 자유롭게 즐기는 무료 버스킹입니다. 누구나 현장에서 관람할 수 있고, 예약은 좌석 지정이 아닌 참가 신청을 받기 위한 절차입니다.",
       includes: ["자유 관람", "공연 일정 안내", "예약은 참가 신청 용도"]
+    },
+    {
+      id: "oryukdo-coastal-plants", title: "오륙도 해안 식물 관찰 및 해설", season: "spring", location: "오륙도",
+      venue: "오륙도 해맞이공원 안내소", category: "바다생태", dateNumber: "04.11", dateDay: "SUN", time: "10:00", duration: "100분", seats: 16, reward: 400, price: 18000,
+      image: "gwangalli-clean-sea.png", imageAlt: "봄의 부산 해안길에서 식물을 관찰하며 해설을 듣는 여행자", themes: ["ecology"],
+      tags: ["해안 식물 관찰", "전문 해설", "관찰 노트 제공"],
+      schedules: [
+        { value: "2027-04-11T10:00", label: "2027년 4월 11일 (일) 10:00" },
+        { value: "2027-04-18T10:00", label: "2027년 4월 18일 (일) 10:00" }
+      ],
+      description: "오륙도 해안길을 천천히 걸으며 갯메꽃과 해국 등 바닷바람에 적응해 살아가는 해안 식물을 관찰하고 전문 해설을 듣는 봄 생태 프로그램입니다.",
+      includes: ["전문 생태 해설", "해안 식물 관찰 노트", "휴대용 돋보기 대여"]
+    },
+    {
+      id: "dadaepo-beach-sketch", title: "다대포 해변 풍경 스케치 대회", season: "summer", location: "다대포",
+      venue: "다대포해수욕장 해변공원", category: "사진·문화", dateNumber: "07.17", dateDay: "SAT", time: "15:00", duration: "150분", seats: 80, reward: 300,
+      image: "assets/dadaepo-sunset.png", imageAlt: "여름 다대포 해변 풍경을 바라보며 그림을 그리는 참가자", themes: ["culture"],
+      tags: ["무료 참가", "개인 화구 지참", "현장 작품 제출"],
+      schedules: [{ value: "2027-07-17T15:00", label: "2027년 7월 17일 (토) 15:00" }],
+      description: "여름 다대포의 바다와 노을을 자유롭게 그려 현장에서 작품을 제출하는 무료 스케치 대회입니다. 종이와 채색 도구 등 개인 화구를 준비해 주세요.",
+      includes: ["참가 번호표", "작품 제출 안내", "개인 화구 제공 없음"]
+    },
+    {
+      id: "haeundae-coastal-bike", title: "해운대 가을 해변 자전거 타기", season: "autumn", location: "해운대",
+      venue: "해운대해수욕장 이벤트광장", category: "액티비티", dateNumber: "10.16", dateDay: "SAT", time: "09:30", duration: "120분", seats: 20, reward: 500, price: 30000,
+      image: "assets/songjeong-surf.png", imageAlt: "선선한 가을 부산 해변을 따라 자전거를 타는 여행자", themes: ["activity"],
+      tags: ["자전거 대여 포함", "해안 코스", "안전 장비 제공"],
+      schedules: [
+        { value: "2027-10-16T09:30", label: "2027년 10월 16일 (토) 09:30" },
+        { value: "2027-10-23T09:30", label: "2027년 10월 23일 (토) 09:30" }
+      ],
+      description: "해운대에서 송정으로 이어지는 가을 해안 코스를 자전거로 달리는 가이드 동행 체험입니다. 자전거와 헬멧을 대여해 가볍게 참여할 수 있어요.",
+      includes: ["자전거 대여", "헬멧·안전 장비", "코스 가이드 동행"]
+    },
+    {
+      id: "cheongsapo-breakwater-fishing", title: "청사포 겨울 방파제 낚시", season: "winter", location: "청사포",
+      venue: "청사포항 안전 낚시 구역", category: "바다생태", dateNumber: "01.23", dateDay: "SAT", time: "08:00", duration: "180분", seats: 30, reward: 300,
+      image: "assets/winter-sunrise-contest.png", imageAlt: "겨울 아침 부산 방파제의 안전 구역에서 낚시를 즐기는 참가자", themes: ["ecology"],
+      tags: ["무료 참가", "개인 장비 필수", "장비 제공 없음"],
+      schedules: [{ value: "2027-01-23T08:00", label: "2027년 1월 23일 (토) 08:00" }],
+      description: "겨울 청사포 방파제의 지정된 안전 구역에서 자유롭게 낚시를 즐기는 무료 행사입니다. 낚싯대, 미끼, 구명조끼 등 필요한 장비는 제공하지 않으므로 반드시 개인 장비를 준비해 주세요.",
+      includes: ["안전 구역 안내", "현장 안전요원", "낚시 장비·미끼 제공 없음"]
     }
   ];
 
