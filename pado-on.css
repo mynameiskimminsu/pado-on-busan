@@ -1208,6 +1208,71 @@ p {
   gap: 24px;
 }
 
+/* My photos */
+.my-photos-section {
+  padding-top: 100px;
+  padding-bottom: 110px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, #f4fbfb 0%, #ffffff 100%);
+}
+
+.my-photos-heading {
+  align-items: end;
+  margin-bottom: 12px;
+}
+
+.my-photos-summary {
+  display: flex;
+  align-items: baseline;
+  gap: 7px;
+  color: var(--muted);
+}
+
+.my-photos-summary strong {
+  color: var(--coral-500);
+  font-family: "DM Sans", "Noto Sans KR", sans-serif;
+  font-size: 38px;
+  line-height: 1;
+}
+
+.my-photos-description {
+  margin: 0 0 30px;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.my-photos-empty {
+  padding: 64px 20px;
+  border-color: #aacfd1;
+  background: rgba(255, 255, 255, 0.74);
+}
+
+.my-photos-empty-icon {
+  display: grid;
+  width: 58px;
+  height: 58px;
+  margin: 0 auto 18px;
+  place-items: center;
+  border-radius: 50%;
+  background: #dff2f2;
+  color: var(--ocean-500);
+}
+
+.my-photos-empty-icon .icon {
+  width: 27px;
+  height: 27px;
+}
+
+.my-photos-empty h3 {
+  margin: 0 0 8px;
+}
+
+.my-photos-empty p {
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
 .story-card {
   min-width: 0;
   overflow: hidden;
@@ -1235,12 +1300,11 @@ p {
   transform: scale(1.035);
 }
 
-.story-delete {
+.story-delete,
+.story-edit {
   position: absolute;
   top: 13px;
-  right: 13px;
   display: grid;
-  width: 36px;
   height: 36px;
   place-items: center;
   border: 1px solid rgba(255, 255, 255, 0.55);
@@ -1249,6 +1313,26 @@ p {
   color: white;
   cursor: pointer;
   backdrop-filter: blur(8px);
+}
+
+.story-delete {
+  right: 13px;
+  width: 36px;
+}
+
+.story-edit {
+  right: 57px;
+  min-width: 50px;
+  padding: 0 13px;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.story-delete:hover,
+.story-edit:hover,
+.story-delete:focus-visible,
+.story-edit:focus-visible {
+  background: rgba(4, 40, 54, 0.92);
 }
 
 .story-delete .icon {

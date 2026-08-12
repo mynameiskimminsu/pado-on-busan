@@ -32,6 +32,7 @@
         <a href="#seasons">계절 추천</a>
         <a href="#events">모두의 행사</a>
         <a href="#stories">바다 이야기</a>
+        <a href="#my-photos">내 사진</a>
         <a href="#bookings">내 예약</a>
         <a href="#rewards">SEA 포인트</a>
       </nav>
@@ -232,6 +233,27 @@
       <div class="story-grid" id="storyGrid" aria-live="polite"></div>
     </section>
 
+    <section class="section my-photos-section" id="my-photos" aria-labelledby="myPhotosTitle">
+      <div class="section-heading my-photos-heading">
+        <div>
+          <p class="eyebrow"><span></span> MY SEA PHOTOS</p>
+          <h2 id="myPhotosTitle">내가 담은 부산 바다</h2>
+        </div>
+        <div class="my-photos-summary">
+          <strong id="myPhotoCount">0</strong>
+          <span>개의 추억</span>
+        </div>
+      </div>
+      <p class="my-photos-description">내가 올린 사진과 이야기만 한곳에서 모아볼 수 있어요.</p>
+      <div class="story-grid my-photo-grid" id="myPhotoGrid" aria-live="polite"></div>
+      <div class="empty-state my-photos-empty hidden" id="myPhotosEmpty">
+        <span class="my-photos-empty-icon" aria-hidden="true"><svg class="icon"><use href="#icon-camera"></use></svg></span>
+        <h3>아직 올린 사진이 없어요</h3>
+        <p>부산 바다에서 만난 특별한 순간을 첫 사진으로 남겨보세요.</p>
+        <button class="button button-coral" type="button" data-open-story-form>첫 사진 올리기</button>
+      </div>
+    </section>
+
     <section class="section account-section" aria-labelledby="accountTitle">
       <div class="section-heading">
         <div>
@@ -306,7 +328,7 @@
   <nav class="mobile-nav" aria-label="모바일 메뉴">
     <a href="#home"><svg class="icon"><use href="#icon-home"></use></svg><span>홈</span></a>
     <a href="#events"><svg class="icon"><use href="#icon-compass"></use></svg><span>행사</span></a>
-    <a href="#stories"><svg class="icon"><use href="#icon-camera"></use></svg><span>이야기</span></a>
+    <a href="#my-photos"><svg class="icon"><use href="#icon-camera"></use></svg><span>내 사진</span></a>
     <a href="#bookings"><svg class="icon"><use href="#icon-ticket"></use></svg><span>예약</span></a>
     <a href="#rewards"><svg class="icon"><use href="#icon-gift"></use></svg><span>포인트</span></a>
   </nav>

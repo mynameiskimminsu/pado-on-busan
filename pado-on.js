@@ -11,6 +11,7 @@
   var activeSeasonFilter = "all";
   var storyImageData = "";
   var storyImageRequest = 0;
+  var editingStoryId = null;
   var toastTimer = null;
 
   var seasons = {
@@ -518,10 +519,11 @@
   }
 
   function storyCard(story) {
+    var editButton = story.userCreated ? '<button class="story-edit" type="button" data-edit-story="' + escapeHtml(story.id) + '" aria-label="이야기 수정">수정</button>' : "";
     var deleteButton = story.userCreated ? '<button class="story-delete" type="button" data-delete-story="' + escapeHtml(story.id) + '" aria-label="이야기 삭제">' + icon("trash") + "</button>" : "";
     return [
       '<article class="story-card" data-story-id="' + escapeHtml(story.id) + '">',
-      '<div class="story-visual"><img src="' + escapeHtml(story.image) + '" alt="' + escapeHtml(story.title) + '" loading="lazy" decoding="async">' + deleteButton + "</div>",
+      '<div class="story-visual"><img src="' + escapeHtml(story.image) + '" alt="' + escapeHtml(story.title) + '" loading="lazy" decoding="async">' + editButton + deleteButton + "</div>",
       '<div class="story-body"><p class="story-meta"><span>' + escapeHtml(story.location) + "</span> · " + escapeHtml(story.date) + "</p>",
       "<h3>" + escapeHtml(story.title) + "</h3><p>" + escapeHtml(story.content) + '</p><strong class="story-author">by. ' + escapeHtml(story.author) + "</strong></div></article>"
     ].join("");
@@ -529,6 +531,15 @@
 
   function renderStories() {
     byId("storyGrid").innerHTML = userStories.concat(defaultStories).map(storyCard).join("");
+  }
+
+  function renderMyPhotos() {
+    var grid = byId("myPhotoGrid");
+    var empty = byId("myPhotosEmpty");
+    byId("myPhotoCount").textContent = String(userStories.length);
+    grid.innerHTML = userStories.map(storyCard).join("");
+    grid.classList.toggle("hidden", userStories.length === 0);
+    empty.classList.toggle("hidden", userStories.length !== 0);
   }
 
   function toggleStoryForm(show) {
@@ -545,13 +556,36 @@
 
   function resetStoryForm() {
     storyImageRequest += 1;
+    editingStoryId = null;
     byId("storyForm").reset(); storyImageData = "";
+    byId("storyImage").required = true;
     byId("storyImagePreview").src = "";
     byId("storyImagePreview").classList.add("hidden");
     byId("storyUploadPlaceholder").classList.remove("hidden");
     byId("storyImageStatus").textContent = "사진은 게시 전에 브라우저에 맞게 압축됩니다.";
     byId("storySubmit").disabled = false;
     byId("storySubmit").textContent = "게시하기";
+  }
+
+  function editStory(storyId) {
+    var story = userStories.find(function (item) { return item.id === storyId; });
+    if (!story) return;
+    editingStoryId = story.id;
+    storyImageData = story.image;
+    byId("storyAuthor").value = story.author;
+    byId("storyLocation").value = story.location;
+    byId("storyTitle").value = story.title;
+    byId("storyContent").value = story.content;
+    byId("storyImage").required = false;
+    byId("storyImagePreview").src = story.image;
+    byId("storyImagePreview").classList.remove("hidden");
+    byId("storyUploadPlaceholder").classList.add("hidden");
+    byId("storyImageStatus").textContent = "사진을 누르면 다른 사진으로 바꿀 수 있어요.";
+    byId("storySubmit").textContent = "수정 저장하기";
+    byId("storyFormShell").classList.remove("hidden");
+    byId("openStoryForm").setAttribute("aria-expanded", "true");
+    byId("stories").scrollIntoView({ behavior: "smooth", block: "start" });
+    window.setTimeout(function () { byId("storyTitle").focus(); }, 350);
   }
 
   function compressStoryImage(file) {
@@ -608,21 +642,25 @@
     if (!storyImageData) { showToast("체험 사진을 먼저 선택해 주세요."); return; }
     var formData = new FormData(formEvent.currentTarget);
     var today = new Intl.DateTimeFormat("ko-KR", { year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date()).replace(/\. /g, ".").replace(".", ".").replace(/\.$/, "");
+    var existingStory = editingStoryId ? userStories.find(function (item) { return item.id === editingStoryId; }) : null;
     var story = {
-      id: "story-" + Date.now(), author: String(formData.get("author")).trim(), title: String(formData.get("title")).trim(),
+      id: existingStory ? existingStory.id : "story-" + Date.now(), author: String(formData.get("author")).trim(), title: String(formData.get("title")).trim(),
       location: String(formData.get("location")).trim(), content: String(formData.get("content")).trim(), date: today,
       image: storyImageData, userCreated: true
     };
     if (!story.author || !story.title || !story.location || !story.content) return;
-    var nextStories = [story].concat(userStories).slice(0, 6);
+    var nextStories = existingStory
+      ? userStories.map(function (item) { return item.id === story.id ? story : item; })
+      : [story].concat(userStories).slice(0, 6);
     if (!saveStories(nextStories)) return;
-    renderStories(); toggleStoryForm(false); showToast("바다 이야기가 게시됐어요.");
+    renderStories(); renderMyPhotos(); toggleStoryForm(false);
+    showToast(existingStory ? "사진 이야기가 수정됐어요." : "내 사진에 새로운 추억이 저장됐어요.");
   }
 
   function deleteStory(storyId) {
     if (!window.confirm("이 바다 이야기를 삭제할까요?")) return;
     var nextStories = userStories.filter(function (story) { return story.id !== storyId; });
-    if (saveStories(nextStories)) { renderStories(); showToast("바다 이야기가 삭제됐어요."); }
+    if (saveStories(nextStories)) { renderStories(); renderMyPhotos(); showToast("사진이 삭제됐어요."); }
   }
 
   function showToast(message) {
@@ -635,7 +673,7 @@
   function resetPrototypeData() {
     if (!window.confirm("새로 만든 예약과 바다 이야기를 지우고, 완료 체험과 500 SEA 포인트 예시를 다시 불러올까요?")) return;
     bookings = [copy(defaultBooking)]; wallet = copy(defaultWallet); userStories = [];
-    saveState(); saveStories([]); resetFilters(); renderAllAccountData(); renderStories(); toggleStoryForm(false);
+    saveState(); saveStories([]); resetFilters(); renderAllAccountData(); renderStories(); renderMyPhotos(); toggleStoryForm(false);
     showToast("데모 데이터가 다시 준비됐어요.");
   }
 
@@ -648,6 +686,12 @@
     byId("resetFilters").addEventListener("click", resetFilters);
     byId("resetPrototype").addEventListener("click", resetPrototypeData);
     byId("openStoryForm").addEventListener("click", function () { toggleStoryForm(byId("storyFormShell").classList.contains("hidden")); });
+    document.querySelectorAll("[data-open-story-form]").forEach(function (button) {
+      button.addEventListener("click", function () {
+        toggleStoryForm(true);
+        byId("stories").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
     byId("cancelStoryForm").addEventListener("click", function () { toggleStoryForm(false); });
     byId("storyImage").addEventListener("change", function () { handleStoryImage(this.files && this.files[0]); });
     byId("storyForm").addEventListener("submit", submitStory);
@@ -657,11 +701,13 @@
       var completeButton = clickEvent.target.closest("[data-complete-booking]");
       var cancelButton = clickEvent.target.closest("[data-cancel-booking]");
       var deleteButton = clickEvent.target.closest("[data-delete-story]");
+      var editButton = clickEvent.target.closest("[data-edit-story]");
       var scrollButton = clickEvent.target.closest("[data-scroll]");
       if (openButton) openEvent(openButton.getAttribute("data-open-event"));
       if (completeButton) completeBooking(completeButton.getAttribute("data-complete-booking"));
       if (cancelButton) cancelBooking(cancelButton.getAttribute("data-cancel-booking"));
       if (deleteButton) deleteStory(deleteButton.getAttribute("data-delete-story"));
+      if (editButton) editStory(editButton.getAttribute("data-edit-story"));
       if (scrollButton) { var target = document.querySelector(scrollButton.getAttribute("data-scroll")); if (target) target.scrollIntoView({ behavior: "smooth", block: "center" }); }
     });
 
@@ -677,7 +723,7 @@
     if (!Array.isArray(bookings)) bookings = [copy(defaultBooking)];
     if (!wallet || typeof wallet.points !== "number") wallet = copy(defaultWallet);
     if (!Array.isArray(userStories)) userStories = [];
-    saveState(); renderSeason("summer"); renderEvents(); renderAllAccountData(); renderStories(); initInteractions();
+    saveState(); renderSeason("summer"); renderEvents(); renderAllAccountData(); renderStories(); renderMyPhotos(); initInteractions();
   }
 
   document.addEventListener("DOMContentLoaded", init);
