@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="부산 바다의 사계절 행사와 체험을 발견하고 예약하고 리워드까지 받는 관광 플랫폼, 파도온">
+  <meta name="theme-color" content="#073a50">
+  <title>파도온 | 부산 바다를 켜다</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="pado-on.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 바로가기</a>
+
+  <header class="site-header" id="siteHeader">
+    <div class="header-inner">
+      <a class="brand" href="#home" aria-label="파도온 홈">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M7 22c4.5 0 4.5-5 9-5s4.5 5 9 5 4.5-5 9-5"/><path d="M7 28c4.5 0 4.5-5 9-5s4.5 5 9 5 4.5-5 9-5"/></svg>
+        </span>
+        <span class="brand-copy"><strong>PADO ON</strong><small>BUSAN SEA EXPERIENCE</small></span>
+      </a>
+
+      <button class="menu-toggle" id="menuToggle" type="button" aria-expanded="false" aria-controls="mainNav">
+        <svg class="icon" aria-hidden="true"><use href="#icon-menu"></use></svg>
+        <span class="sr-only">메뉴 열기</span>
+      </button>
+
+      <nav class="main-nav" id="mainNav" aria-label="주요 메뉴">
+        <a href="#seasons">계절 추천</a>
+        <a href="#events">모두의 행사</a>
+        <a href="#bookings">내 예약</a>
+        <a href="#rewards">파도 리워드</a>
+      </nav>
+
+      <button class="points-button" type="button" data-scroll="#rewards" aria-label="파도 리워드 보기">
+        <svg class="icon" aria-hidden="true"><use href="#icon-gift"></use></svg>
+        <span><b id="headerPoints">0</b>P</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="hero-shade"></div>
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <p class="eyebrow light"><span></span> BUSAN SEA, ALL YEAR ROUND</p>
+          <h1 id="heroTitle">부산 바다를 켜다,<br><em>사계절 내내.</em></h1>
+          <p class="hero-description">산책부터 서핑, 노을과 실내 체험까지.<br>계절과 취향에 꼭 맞는 부산의 바다를 만나보세요.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#events">이번 주 행사 보기 <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+            <a class="button button-glass" href="#seasons">계절별 추천 받기</a>
+          </div>
+          <p class="hero-note"><svg class="icon" aria-hidden="true"><use href="#icon-eye"></use></svg> 회원가입 없이 모든 행사를 둘러볼 수 있어요</p>
+        </div>
+
+        <article class="hero-pick" aria-label="이번 주 추천 행사">
+          <div class="hero-pick-top">
+            <span class="live-dot"></span>
+            <span>이번 주 가장 빠른 바다</span>
+            <span class="hero-pick-date">8.15 토</span>
+          </div>
+          <h2>광안리 선셋 비치요가</h2>
+          <p><svg class="icon" aria-hidden="true"><use href="#icon-pin"></use></svg> 광안리 해변 · 18:30</p>
+          <div class="hero-pick-bottom">
+            <span><b>8자리</b> 남음 · 500P</span>
+            <button class="circle-button" type="button" data-open-event="gwangalli-yoga" aria-label="광안리 선셋 비치요가 자세히 보기">
+              <svg class="icon"><use href="#icon-arrow"></use></svg>
+            </button>
+          </div>
+        </article>
+      </div>
+
+      <div class="hero-highlights" aria-label="파도온 핵심 기능">
+        <div><span class="highlight-number">01</span><p><strong>모두에게 열린 행사</strong><small>로그인 없이 한눈에 발견</small></p></div>
+        <div><span class="highlight-number">02</span><p><strong>간편한 사전 예약</strong><small>날짜와 인원만 골라 완료</small></p></div>
+        <div><span class="highlight-number">03</span><p><strong>참여 후 파도 리워드</strong><small>다음 부산 여행에 바로 사용</small></p></div>
+      </div>
+    </section>
+
+    <section class="section season-section" id="seasons" aria-labelledby="seasonTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> FOUR SEASONS OF BUSAN</p>
+          <h2 id="seasonTitle">계절이 바뀌면,<br>바다의 즐거움도 달라져요</h2>
+        </div>
+        <p>같은 부산 바다도 계절마다 전혀 다른 표정을 보여줘요.<br>지금 떠나고 싶은 계절을 골라보세요.</p>
+      </div>
+
+      <div class="season-tabs" role="tablist" aria-label="계절 선택">
+        <button type="button" role="tab" aria-selected="false" data-season="spring"><span>01</span>봄<small>MAR—MAY</small></button>
+        <button type="button" role="tab" aria-selected="true" data-season="summer"><span>02</span>여름<small>JUN—AUG</small></button>
+        <button type="button" role="tab" aria-selected="false" data-season="autumn"><span>03</span>가을<small>SEP—NOV</small></button>
+        <button type="button" role="tab" aria-selected="false" data-season="winter"><span>04</span>겨울<small>DEC—FEB</small></button>
+      </div>
+
+      <article class="season-showcase summer" id="seasonShowcase">
+        <div class="season-image">
+          <img id="seasonImage" src="assets/songjeong-surf.png" alt="송정 해변에서 즐기는 초보자 서핑">
+          <div class="season-stamp" aria-hidden="true"><span id="seasonStampKr">여름</span><small id="seasonStampEn">SUMMER</small></div>
+          <p class="image-caption" id="seasonCaption">SONGJEONG · BUSAN</p>
+        </div>
+        <div class="season-content">
+          <p class="season-kicker" id="seasonKicker">BODY &amp; WAVE</p>
+          <h3 id="seasonHeadline">몸으로 만나는<br><em>푸른 파도</em></h3>
+          <p id="seasonDescription">송정의 첫 파도부터 광안리의 선셋 패들보드까지, 가장 부산다운 여름을 온몸으로 즐겨보세요.</p>
+          <div class="season-tags" id="seasonTags" aria-label="추천 활동"></div>
+          <button class="text-link" type="button" id="seasonEventButton">여름 행사 모아보기 <svg class="icon"><use href="#icon-arrow"></use></svg></button>
+        </div>
+      </article>
+    </section>
+
+    <section class="section events-section" id="events" aria-labelledby="eventsTitle">
+      <div class="section-heading events-heading">
+        <div>
+          <p class="eyebrow"><span></span> OPEN TO EVERYONE</p>
+          <h2 id="eventsTitle">모두에게 열린 바다</h2>
+        </div>
+        <p>관광객 누구나 행사 정보를 확인하고<br>원하는 일정만 간편하게 예약할 수 있어요.</p>
+      </div>
+
+      <div class="event-filters" aria-label="행사 필터">
+        <div class="filter-pills" role="group" aria-label="계절 필터">
+          <button type="button" class="active" data-season-filter="all" aria-pressed="true">전체</button>
+          <button type="button" data-season-filter="spring" aria-pressed="false">봄</button>
+          <button type="button" data-season-filter="summer" aria-pressed="false">여름</button>
+          <button type="button" data-season-filter="autumn" aria-pressed="false">가을</button>
+          <button type="button" data-season-filter="winter" aria-pressed="false">겨울</button>
+        </div>
+        <div class="filter-selects">
+          <label>
+            <span class="sr-only">테마 선택</span>
+            <select id="themeFilter">
+              <option value="all">모든 테마</option>
+              <option value="free">무료 행사</option>
+              <option value="beginner">초보자 추천</option>
+              <option value="family">아이와 함께</option>
+              <option value="indoor">실내 체험</option>
+            </select>
+          </label>
+          <label>
+            <span class="sr-only">지역 선택</span>
+            <select id="locationFilter">
+              <option value="all">부산 전체</option>
+              <option value="광안리">광안리</option>
+              <option value="송정">송정</option>
+              <option value="다대포">다대포</option>
+              <option value="영도">영도</option>
+              <option value="청사포">청사포</option>
+              <option value="오륙도">오륙도</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <div class="event-meta">
+        <p><strong id="eventCount">0</strong>개의 바다 경험을 찾았어요</p>
+        <p class="demo-label">화면의 행사·일정은 프로토타입 시연용 예시입니다</p>
+      </div>
+      <div class="event-grid" id="eventGrid" aria-live="polite"></div>
+      <div class="empty-state hidden" id="eventEmpty">
+        <span aria-hidden="true">〰</span>
+        <h3>조건에 맞는 행사가 아직 없어요</h3>
+        <p>필터를 바꾸면 더 많은 부산 바다를 만날 수 있어요.</p>
+        <button class="button button-dark" type="button" id="resetFilters">필터 초기화</button>
+      </div>
+    </section>
+
+    <section class="journey-section" aria-labelledby="journeyTitle">
+      <div class="journey-inner">
+        <div class="journey-heading">
+          <p class="eyebrow light"><span></span> HOW IT FLOWS</p>
+          <h2 id="journeyTitle">발견부터 다음 여행까지,<br>하나의 흐름으로</h2>
+          <p>복잡한 절차 없이 부산 바다를 즐기는 데만 집중하세요.</p>
+        </div>
+        <ol class="journey-steps">
+          <li>
+            <span class="step-icon"><svg class="icon"><use href="#icon-compass"></use></svg></span>
+            <span class="step-number">01</span>
+            <h3>바다 발견</h3>
+            <p>계절과 취향에 맞는<br>공개 행사를 골라요.</p>
+          </li>
+          <li>
+            <span class="step-icon"><svg class="icon"><use href="#icon-calendar"></use></svg></span>
+            <span class="step-number">02</span>
+            <h3>간편 예약</h3>
+            <p>날짜와 인원을 선택해<br>미리 자리를 확보해요.</p>
+          </li>
+          <li>
+            <span class="step-icon"><svg class="icon"><use href="#icon-check"></use></svg></span>
+            <span class="step-number">03</span>
+            <h3>현장 참여</h3>
+            <p>예약 번호로 체크인하고<br>행사를 마음껏 즐겨요.</p>
+          </li>
+          <li>
+            <span class="step-icon"><svg class="icon"><use href="#icon-gift"></use></svg></span>
+            <span class="step-number">04</span>
+            <h3>리워드 도착</h3>
+            <p>참여가 완료되면<br>파도 포인트가 쌓여요.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="section account-section" aria-labelledby="accountTitle">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow"><span></span> MY PADO</p>
+          <h2 id="accountTitle">나의 부산 바다</h2>
+        </div>
+        <p>예약 현황과 참여 리워드를 한곳에서 확인하세요.<br>이 브라우저에 안전하게 저장되는 프로토타입입니다.</p>
+      </div>
+
+      <div class="account-grid">
+        <section class="booking-panel" id="bookings" aria-labelledby="bookingTitle">
+          <div class="panel-heading">
+            <div><span class="panel-icon"><svg class="icon"><use href="#icon-ticket"></use></svg></span><div><p>MY RESERVATIONS</p><h3 id="bookingTitle">내 예약</h3></div></div>
+            <span class="count-badge" id="bookingCount">0건</span>
+          </div>
+          <div id="bookingList"></div>
+        </section>
+
+        <section class="reward-panel" id="rewards" aria-labelledby="rewardTitle">
+          <div class="reward-card">
+            <div class="reward-top">
+              <div>
+                <p>PADO REWARD</p>
+                <h3 id="rewardTitle">내 파도 포인트</h3>
+              </div>
+              <span class="reward-mark"><svg class="icon"><use href="#icon-wave"></use></svg></span>
+            </div>
+            <div class="reward-balance"><strong id="rewardPoints">0</strong><span>P</span></div>
+            <p class="reward-copy">바다를 즐긴 만큼,<br>다음 부산 여행이 가까워져요.</p>
+            <div class="reward-progress" aria-label="리워드 지급 과정">
+              <span class="done"><i>1</i>체크인</span><b></b><span><i>2</i>참여 완료</span><b></b><span><i>3</i>포인트 지급</span>
+            </div>
+          </div>
+          <div class="reward-history">
+            <div class="history-heading"><h4>최근 적립 내역</h4><span id="pendingReward">지급 예정 0P</span></div>
+            <div id="rewardHistory"></div>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section class="closing-cta" aria-labelledby="closingTitle">
+      <div>
+        <p class="eyebrow light"><span></span> YOUR NEXT WAVE</p>
+        <h2 id="closingTitle">다음 파도는<br>어디에서 만날까요?</h2>
+      </div>
+      <a class="button button-coral" href="#events">부산 바다 고르기 <svg class="icon"><use href="#icon-arrow"></use></svg></a>
+      <div class="closing-wave" aria-hidden="true">PADO ON</div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="brand footer-brand" href="#home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40"><path d="M7 22c4.5 0 4.5-5 9-5s4.5 5 9 5 4.5-5 9-5"/><path d="M7 28c4.5 0 4.5-5 9-5s4.5 5 9 5 4.5-5 9-5"/></svg>
+        </span>
+        <span class="brand-copy"><strong>PADO ON</strong><small>부산 바다를 켜다, 사계절 내내.</small></span>
+      </a>
+      <div class="footer-links"><a href="#events">모두의 행사</a><a href="#bookings">내 예약</a><a href="#rewards">리워드 안내</a><button type="button" id="resetPrototype">체험 데이터 초기화</button></div>
+      <p>본 페이지의 행사와 일정은 서비스 콘셉트 시연을 위한 예시입니다.<br>© 2026 PADO ON. Busan sea experience prototype.</p>
+    </div>
+  </footer>
+
+  <nav class="mobile-nav" aria-label="모바일 메뉴">
+    <a href="#home"><svg class="icon"><use href="#icon-home"></use></svg><span>홈</span></a>
+    <a href="#events"><svg class="icon"><use href="#icon-compass"></use></svg><span>행사</span></a>
+    <a href="#bookings"><svg class="icon"><use href="#icon-ticket"></use></svg><span>예약</span></a>
+    <a href="#rewards"><svg class="icon"><use href="#icon-gift"></use></svg><span>리워드</span></a>
+  </nav>
+
+  <dialog class="experience-dialog" id="experienceDialog" aria-labelledby="dialogTitle">
+    <button class="dialog-close" type="button" id="dialogClose" aria-label="창 닫기"><svg class="icon"><use href="#icon-x"></use></svg></button>
+    <div id="dialogBody"></div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="toast-icon"><svg class="icon"><use href="#icon-check"></use></svg></span>
+    <p id="toastMessage"></p>
+  </div>
+
+  <svg class="svg-sprite" aria-hidden="true">
+    <symbol id="icon-arrow" viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 11 9-7 9 7v9H7v-7h10v7"/></symbol>
+    <symbol id="icon-eye" viewBox="0 0 24 24"><path d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12Z"/><circle cx="12" cy="12" r="2.5"/></symbol>
+    <symbol id="icon-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="icon-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+    <symbol id="icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="icon-users" viewBox="0 0 24 24"><path d="M16 20v-1.5c0-2-1.8-3.5-4-3.5H7c-2.2 0-4 1.5-4 3.5V20M9.5 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8ZM17 4.5a3.5 3.5 0 0 1 0 6.8M19 15c1.3.6 2 1.8 2 3.4V20"/></symbol>
+    <symbol id="icon-ticket" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 0 2-2h14a2 2 0 0 0 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 0-2 2H5a2 2 0 0 0-2-2v-3a2 2 0 0 0 0-4V7Z"/><path d="M13 8v2M13 14v2"/></symbol>
+    <symbol id="icon-gift" viewBox="0 0 24 24"><path d="M4 10h16v10H4zM2 7h20v3H2zM12 7v13M12 7H7.5a2.5 2.5 0 1 1 2.1-3.9L12 7Zm0 0h4.5a2.5 2.5 0 1 0-2.1-3.9L12 7Z"/></symbol>
+    <symbol id="icon-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m15.5 8.5-2 5-5 2 2-5 5-2Z"/></symbol>
+    <symbol id="icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="icon-wave" viewBox="0 0 24 24"><path d="M3 10c3 0 3-3 6-3s3 3 6 3 3-3 6-3M3 16c3 0 3-3 6-3s3 3 6 3 3-3 6-3"/></symbol>
+    <symbol id="icon-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="icon-plus" viewBox="0 0 24 24"><path d="M5 12h14M12 5v14"/></symbol>
+  </svg>
+
+  <script src="pado-on.js"></script>
+</body>
+</html>
