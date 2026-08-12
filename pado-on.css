@@ -1208,6 +1208,35 @@ p {
   gap: 24px;
 }
 
+.event-remaining {
+  margin-top: 5px;
+  color: var(--navy-800);
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.schedule-remaining {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  border: 1px solid #c7e0df;
+  border-radius: 12px;
+  background: #eff9f8;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.schedule-remaining strong {
+  color: var(--navy-900);
+  font-size: 15px;
+}
+
+.success-remaining {
+  margin: 14px 0 0;
+  color: var(--navy-800);
+}
+
 /* My photos */
 .my-photos-section {
   padding-top: 100px;

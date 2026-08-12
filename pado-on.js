@@ -265,11 +265,13 @@
     }).reduce(function (sum, booking) { return sum + Number(booking.quantity || 0); }, 0);
   }
 
-  function getRemaining(event) {
-    var mostAvailable = event.schedules.reduce(function (maximum, schedule) {
-      return Math.max(maximum, event.seats - getReservedCount(event.id, schedule.value));
-    }, 0);
-    return Math.max(0, mostAvailable);
+  function getRemaining(event, scheduleValue) {
+    var selectedSchedule = scheduleValue || (event.schedules[0] && event.schedules[0].value);
+    return Math.max(0, event.seats - getReservedCount(event.id, selectedSchedule));
+  }
+
+  function hasAvailableSchedule(event) {
+    return event.schedules.some(function (schedule) { return getRemaining(event, schedule.value) > 0; });
   }
 
   function renderSeason(seasonKey) {
@@ -294,6 +296,7 @@
 
   function eventCard(event) {
     var remaining = getRemaining(event);
+    var available = hasAvailableSchedule(event);
     return [
       '<article class="event-card" data-event-id="' + escapeHtml(event.id) + '" data-season="' + escapeHtml(event.season) + '" data-themes="' + escapeHtml(event.themes.join(" ")) + '">',
       '<div class="event-visual">',
@@ -306,8 +309,8 @@
       "<h3>" + escapeHtml(event.title) + "</h3>",
       '<div class="event-tags">' + event.tags.map(function (tag) { return "<span>" + escapeHtml(tag) + "</span>"; }).join("") + "</div>",
       '<div class="event-card-footer">',
-      '<div class="event-reward"><strong>+' + formatPoints(event.reward) + ' SEA P</strong><small>참여 완료 후 적립</small></div>',
-      '<button type="button" data-open-event="' + escapeHtml(event.id) + '"' + (remaining === 0 ? ' class="sold-out"' : "") + ">" + (remaining === 0 ? "마감" : "자세히 보기") + " " + icon("arrow") + "</button>",
+      '<div class="event-reward"><strong>+' + formatPoints(event.reward) + ' SEA P</strong><small>참여 완료 후 적립</small><span class="event-remaining">' + remaining + '자리 남음</span></div>',
+      '<button type="button" data-open-event="' + escapeHtml(event.id) + '"' + (!available ? ' class="sold-out"' : "") + ">" + (!available ? "마감" : "자세히 보기") + " " + icon("arrow") + "</button>",
       "</div></div></article>"
     ].join("");
   }
@@ -341,6 +344,7 @@
 
   function renderDialogDetail(event) {
     var remaining = getRemaining(event);
+    var available = hasAvailableSchedule(event);
     var includes = event.includes.map(function (item) { return "<li>" + icon("check") + "<span>" + escapeHtml(item) + "</span></li>"; }).join("");
     byId("dialogBody").innerHTML = [
       '<section class="dialog-detail"><div class="dialog-hero">',
@@ -351,25 +355,30 @@
       '<aside class="detail-summary">',
       '<div class="summary-row"><span>일정</span><strong>' + escapeHtml(event.schedules[0].label) + "</strong></div>",
       '<div class="summary-row"><span>소요 시간</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
-      '<div class="summary-row"><span>남은 자리</span><strong>' + remaining + "자리</strong></div>",
+      '<div class="summary-row"><span>첫 일정 남은 자리</span><strong>' + remaining + "자리</strong></div>",
       '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
-      '<button class="button button-dark" id="reserveFromDetail" type="button"' + (remaining === 0 ? " disabled" : "") + ">" + (remaining === 0 ? "예약 마감" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
+      '<button class="button button-dark" id="reserveFromDetail" type="button"' + (!available ? " disabled" : "") + ">" + (!available ? "예약 마감" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
       "</aside></div></div></section>"
     ].join("");
     var reserveButton = byId("reserveFromDetail");
-    if (reserveButton && remaining > 0) reserveButton.addEventListener("click", function () { bookingQty = 1; renderBookingStep(event); });
+    if (reserveButton && available) reserveButton.addEventListener("click", function () { bookingQty = 1; renderBookingStep(event); });
   }
 
   function renderBookingStep(event) {
-    var remaining = getRemaining(event);
+    var firstAvailableSchedule = event.schedules.find(function (schedule) { return getRemaining(event, schedule.value) > 0; }) || event.schedules[0];
+    var remaining = getRemaining(event, firstAvailableSchedule.value);
     var maxQuantity = Math.max(1, Math.min(5, remaining));
-    var options = event.schedules.map(function (schedule) { return '<option value="' + escapeHtml(schedule.value) + '">' + escapeHtml(schedule.label) + "</option>"; }).join("");
+    var options = event.schedules.map(function (schedule) {
+      var scheduleRemaining = getRemaining(event, schedule.value);
+      return '<option value="' + escapeHtml(schedule.value) + '"' + (schedule.value === firstAvailableSchedule.value ? " selected" : "") + (scheduleRemaining === 0 ? " disabled" : "") + '>' + escapeHtml(schedule.label) + " · " + scheduleRemaining + "자리 남음</option>";
+    }).join("");
     byId("dialogBody").innerHTML = [
       '<section class="booking-step"><header class="step-header"><span>RESERVATION · STEP 2 OF 2</span>',
       '<h2 id="dialogTitle">방문할 날짜를 골라주세요</h2><p>입력한 예약 정보는 이 브라우저에만 저장됩니다.</p></header>',
       '<div class="booking-layout"><form class="booking-form" id="bookingForm">',
       '<label class="form-field"><span>방문 일정</span><select id="bookingSchedule" name="schedule" required>' + options + "</select></label>",
-      '<div class="guest-field"><span>참여 인원<small>한 번에 최대 ' + maxQuantity + '명</small></span><div class="stepper">',
+      '<div class="schedule-remaining" aria-live="polite"><span>선택 일정 남은 자리</span><strong id="selectedScheduleRemaining">' + remaining + '자리</strong></div>',
+      '<div class="guest-field"><span>참여 인원<small id="bookingMaxGuide">한 번에 최대 ' + maxQuantity + '명</small></span><div class="stepper">',
       '<button type="button" id="qtyMinus" aria-label="인원 줄이기">' + icon("minus") + '</button><output id="qtyOutput" aria-live="polite">1</output><button type="button" id="qtyPlus" aria-label="인원 늘리기">' + icon("plus") + "</button></div></div>",
       '<div class="form-grid"><label class="form-field"><span>예약자 이름</span><input name="name" autocomplete="name" maxlength="30" placeholder="이름을 입력해 주세요" required></label>',
       '<label class="form-field"><span>연락처 또는 이메일</span><input name="contact" autocomplete="email" maxlength="60" placeholder="example@email.com" required></label></div>',
@@ -387,8 +396,17 @@
       byId("qtyMinus").disabled = bookingQty <= 1;
       byId("qtyPlus").disabled = bookingQty >= maxQuantity;
     }
+    function updateScheduleAvailability() {
+      var scheduleRemaining = getRemaining(event, byId("bookingSchedule").value);
+      maxQuantity = Math.max(1, Math.min(5, scheduleRemaining));
+      byId("selectedScheduleRemaining").textContent = scheduleRemaining + "자리";
+      byId("bookingMaxGuide").textContent = "한 번에 최대 " + maxQuantity + "명";
+      byId("confirmBooking").disabled = scheduleRemaining === 0;
+      updateQuantity(Math.min(bookingQty, maxQuantity));
+    }
     byId("qtyMinus").addEventListener("click", function () { updateQuantity(bookingQty - 1); });
     byId("qtyPlus").addEventListener("click", function () { updateQuantity(bookingQty + 1); });
+    byId("bookingSchedule").addEventListener("change", updateScheduleAvailability);
     byId("backToDetail").addEventListener("click", function () { renderDialogDetail(event); });
     byId("bookingForm").addEventListener("submit", function (formEvent) {
       formEvent.preventDefault();
@@ -412,7 +430,7 @@
       }
       renderAllAccountData(); renderEvents(); renderBookingSuccess(event, booking);
     });
-    updateQuantity(1);
+    updateScheduleAvailability();
   }
 
   function createBookingCode() {
@@ -421,10 +439,12 @@
   }
 
   function renderBookingSuccess(event, booking) {
+    var remaining = getRemaining(event, booking.schedule);
     byId("dialogBody").innerHTML = [
       '<section class="success-step"><div class="success-inner"><span class="success-icon">' + icon("check") + "</span>",
       '<h2 id="dialogTitle">바다 갈 준비 완료!</h2><p>예약이 확정됐어요. 행사 당일 아래 예약 번호를 보여주세요.<br>참여 완료 후 ' + formatPoints(event.reward) + " SEA 포인트가 지급됩니다.</p>",
       '<div class="booking-code"><span>예약 번호</span><strong>' + escapeHtml(booking.id) + "</strong></div>",
+      '<p class="success-remaining">선택한 일정은 이제 <strong>' + remaining + '자리</strong> 남았어요.</p>',
       '<div class="success-actions"><button class="button button-dark" type="button" id="goToBookings">내 예약 보기</button><button class="button button-outline" type="button" id="closeSuccess">계속 둘러보기</button></div>',
       "</div></section>"
     ].join("");
