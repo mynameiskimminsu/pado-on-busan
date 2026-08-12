@@ -31,7 +31,7 @@
       kicker: "REST & BLUE",
       title: "그늘 아래 쉬어가는<br><em>한낮의 바다</em>",
       description: "파라솔 자리를 미리 예약하고 부산의 여름 바다를 여유롭게 즐겨보세요.",
-      tags: ["파라솔 지정석", "선셋 요가", "입문 서핑"],
+      tags: ["파라솔 지정석", "선셋 요가", "비치 휴식"],
       image: "assets/summer-parasol.png",
       alt: "해운대 바다의 파라솔 지정석에서 여름을 즐기는 여행자",
       caption: "HAEUNDAE · BUSAN"
