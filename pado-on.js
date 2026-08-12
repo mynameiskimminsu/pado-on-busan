@@ -64,7 +64,7 @@
   var events = [
     {
       id: "gwangalli-yoga", title: "광안리 선셋 비치요가", season: "summer", location: "광안리",
-      venue: "광안리 해변 만남의 광장", category: "휴양", dateNumber: "08.15", dateDay: "SAT", time: "18:30", duration: "70분", seats: 8, reward: 500,
+      venue: "광안리 해변 만남의 광장", category: "휴양", dateNumber: "08.15", dateDay: "SAT", time: "18:30", duration: "70분", seats: 8, reward: 500, price: 25000,
       image: "assets/pado-on-hero.png", imageAlt: "광안대교가 빛나는 광안리 바다의 저녁 풍경", themes: ["relax"],
       tags: ["초보자 환영", "매트 제공", "선셋"],
       schedules: [
@@ -100,7 +100,7 @@
     },
     {
       id: "cheongsapo-tea", title: "청사포 일출 차담", season: "winter", location: "청사포",
-      venue: "청사포 다릿돌전망대 입구", category: "휴양", dateNumber: "12.19", dateDay: "SAT", time: "07:00", duration: "80분", seats: 10, reward: 500,
+      venue: "청사포 다릿돌전망대 입구", category: "휴양", dateNumber: "12.19", dateDay: "SAT", time: "07:00", duration: "80분", seats: 10, reward: 500, price: 22000,
       image: "assets/pado-on-hero.png", imageAlt: "푸른 시간대의 고요한 부산 바다와 빛나는 다리", themes: ["relax"],
       tags: ["따뜻한 차", "일출 감상", "소규모"],
       schedules: [
@@ -124,7 +124,7 @@
     },
     {
       id: "dadaepo-clam-games", title: "다대포 바지락 캐기 & 갯벌 게임", season: "spring", location: "다대포",
-      venue: "다대포해수욕장 갯벌 체험존", category: "바다생태", dateNumber: "04.24", dateDay: "SAT", time: "10:00", duration: "120분", seats: 20, reward: 700,
+      venue: "다대포해수욕장 갯벌 체험존", category: "바다생태", dateNumber: "04.24", dateDay: "SAT", time: "10:00", duration: "120분", seats: 20, reward: 700, price: 35000,
       image: "assets/spring-clam-game.png", imageAlt: "다대포 갯벌에서 바지락을 캐고 게임을 즐기는 가족과 여행자", themes: ["ecology"],
       tags: ["바지락 캐기", "팀 갯벌 게임", "장화·도구 제공"],
       schedules: [
@@ -136,7 +136,7 @@
     },
     {
       id: "haeundae-parasol", title: "해운대 파라솔 자리 대여", season: "summer", location: "해운대",
-      venue: "해운대해수욕장 이벤트존", category: "휴양", dateNumber: "08.16", dateDay: "SUN", time: "10:00", duration: "120분", seats: 24, reward: 300,
+      venue: "해운대해수욕장 이벤트존", category: "휴양", dateNumber: "08.16", dateDay: "SUN", time: "10:00", duration: "120분", seats: 24, reward: 300, price: 20000,
       image: "assets/summer-parasol.png", imageAlt: "해운대 바다의 지정 파라솔 아래에서 쉬는 여행자들", themes: ["relax"],
       tags: ["파라솔 지정석", "2시간 이용", "사전 예약"],
       schedules: [
@@ -148,7 +148,7 @@
     },
     {
       id: "songjeong-autumn-surf", title: "송정 가을 파도 서핑 체험", season: "autumn", location: "송정",
-      venue: "송정해수욕장 서핑존", category: "액티비티", dateNumber: "09.19", dateDay: "SAT", time: "09:30", duration: "120분", seats: 8, reward: 900,
+      venue: "송정해수욕장 서핑존", category: "액티비티", dateNumber: "09.19", dateDay: "SAT", time: "09:30", duration: "120분", seats: 8, reward: 900, price: 55000,
       image: "assets/songjeong-surf.png", imageAlt: "선선한 가을의 송정 바다에서 서핑을 배우는 입문자들", themes: ["activity"],
       tags: ["입문자 가능", "보드·슈트 제공", "안전 교육"],
       schedules: [
@@ -297,6 +297,7 @@
   function eventCard(event) {
     var remaining = getRemaining(event);
     var available = hasAvailableSchedule(event);
+    var price = Number(event.price || 0);
     return [
       '<article class="event-card" data-event-id="' + escapeHtml(event.id) + '" data-season="' + escapeHtml(event.season) + '" data-themes="' + escapeHtml(event.themes.join(" ")) + '">',
       '<div class="event-visual">',
@@ -309,7 +310,7 @@
       "<h3>" + escapeHtml(event.title) + "</h3>",
       '<div class="event-tags">' + event.tags.map(function (tag) { return "<span>" + escapeHtml(tag) + "</span>"; }).join("") + "</div>",
       '<div class="event-card-footer">',
-      '<div class="event-reward"><strong>+' + formatPoints(event.reward) + ' SEA P</strong><small>참여 완료 후 적립</small><span class="event-remaining">' + remaining + '자리 남음</span></div>',
+      '<div class="event-price"><strong>' + (price ? formatPoints(price) + "원" : "무료") + '</strong><small>' + (price ? "1인 기준 · " : "") + '+' + formatPoints(event.reward) + ' SEA P</small><span class="event-remaining">' + remaining + '자리 남음</span></div>',
       '<button type="button" data-open-event="' + escapeHtml(event.id) + '"' + (!available ? ' class="sold-out"' : "") + ">" + (!available ? "마감" : "자세히 보기") + " " + icon("arrow") + "</button>",
       "</div></div></article>"
     ].join("");
@@ -345,6 +346,7 @@
   function renderDialogDetail(event) {
     var remaining = getRemaining(event);
     var available = hasAvailableSchedule(event);
+    var price = Number(event.price || 0);
     var includes = event.includes.map(function (item) { return "<li>" + icon("check") + "<span>" + escapeHtml(item) + "</span></li>"; }).join("");
     byId("dialogBody").innerHTML = [
       '<section class="dialog-detail"><div class="dialog-hero">',
@@ -356,6 +358,7 @@
       '<div class="summary-row"><span>일정</span><strong>' + escapeHtml(event.schedules[0].label) + "</strong></div>",
       '<div class="summary-row"><span>소요 시간</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
       '<div class="summary-row"><span>첫 일정 남은 자리</span><strong>' + remaining + "자리</strong></div>",
+      '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1인 " + formatPoints(price) + "원" : "무료") + "</strong></div>",
       '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
       '<button class="button button-dark" id="reserveFromDetail" type="button"' + (!available ? " disabled" : "") + ">" + (!available ? "예약 마감" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
       "</aside></div></div></section>"
@@ -365,6 +368,7 @@
   }
 
   function renderBookingStep(event) {
+    var unitPrice = Number(event.price || 0);
     var firstAvailableSchedule = event.schedules.find(function (schedule) { return getRemaining(event, schedule.value) > 0; }) || event.schedules[0];
     var remaining = getRemaining(event, firstAvailableSchedule.value);
     var maxQuantity = Math.max(1, Math.min(5, remaining));
@@ -384,15 +388,18 @@
       '<label class="form-field"><span>연락처 또는 이메일</span><input name="contact" autocomplete="email" maxlength="60" placeholder="example@email.com" required></label></div>',
       '<button class="back-link" id="backToDetail" type="button">← 행사 정보로 돌아가기</button></form>',
       '<aside class="booking-summary-card"><div class="summary-event"><img src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.imageAlt) + '" decoding="async"><div><h3>' + escapeHtml(event.title) + "</h3><p>" + escapeHtml(event.location + " · " + event.time) + "</p></div></div>",
+      '<div class="price-row"><span>1인 이용 요금</span><strong>' + (unitPrice ? formatPoints(unitPrice) + "원" : "무료") + "</strong></div>",
+      '<div class="price-row total payment-total"><span>총 결제 금액</span><strong id="bookingTotal">' + formatPoints(unitPrice) + "원</strong></div>",
       '<div class="price-row total"><span>적립 예정</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
       '<p class="prototype-note reward-note">예약 1건 기준 · 참여 완료 후 적립</p>',
-      '<button class="button button-coral" type="submit" form="bookingForm" id="confirmBooking">예약 확정하기</button>',
-      '<p class="prototype-note">서비스 시연용 예약이며 실제 현장 예약으로 연결되지는 않습니다.</p></aside></div></section>'
+      '<button class="button button-coral" type="submit" form="bookingForm" id="confirmBooking">' + (unitPrice ? "결제 및 예약 확정하기" : "예약 확정하기") + "</button>",
+      '<p class="prototype-note">' + (unitPrice ? "결제 기능 시연용이며 실제 카드 결제는 발생하지 않습니다." : "서비스 시연용 예약이며 실제 현장 예약으로 연결되지는 않습니다.") + "</p></aside></div></section>"
     ].join("");
 
     function updateQuantity(next) {
       bookingQty = Math.max(1, Math.min(maxQuantity, next));
       byId("qtyOutput").textContent = String(bookingQty);
+      byId("bookingTotal").textContent = formatPoints(unitPrice * bookingQty) + "원";
       byId("qtyMinus").disabled = bookingQty <= 1;
       byId("qtyPlus").disabled = bookingQty >= maxQuantity;
     }
@@ -421,6 +428,7 @@
       var booking = {
         id: createBookingCode(), eventId: event.id, schedule: schedule.value, scheduleLabel: schedule.label,
         quantity: bookingQty, name: String(formData.get("name")).trim(), contact: String(formData.get("contact")).trim(),
+        unitPrice: unitPrice, totalPrice: unitPrice * bookingQty, paymentStatus: unitPrice ? "paid-demo" : "free",
         status: "reserved", rewarded: false, createdAt: new Date().toISOString()
       };
       bookings.unshift(booking);
@@ -440,10 +448,14 @@
 
   function renderBookingSuccess(event, booking) {
     var remaining = getRemaining(event, booking.schedule);
+    var paymentMessage = Number(booking.totalPrice || 0)
+      ? '<p class="success-payment"><span>결제 금액</span><strong>' + formatPoints(booking.totalPrice) + '원</strong><small>시연 결제 완료</small></p>'
+      : "";
     byId("dialogBody").innerHTML = [
       '<section class="success-step"><div class="success-inner"><span class="success-icon">' + icon("check") + "</span>",
       '<h2 id="dialogTitle">바다 갈 준비 완료!</h2><p>예약이 확정됐어요. 행사 당일 아래 예약 번호를 보여주세요.<br>참여 완료 후 ' + formatPoints(event.reward) + " SEA 포인트가 지급됩니다.</p>",
       '<div class="booking-code"><span>예약 번호</span><strong>' + escapeHtml(booking.id) + "</strong></div>",
+      paymentMessage,
       '<p class="success-remaining">선택한 일정은 이제 <strong>' + remaining + '자리</strong> 남았어요.</p>',
       '<div class="success-actions"><button class="button button-dark" type="button" id="goToBookings">내 예약 보기</button><button class="button button-outline" type="button" id="closeSuccess">계속 둘러보기</button></div>',
       "</div></section>"
@@ -489,7 +501,8 @@
     function bookingMarkup(booking) {
       var event = getEvent(booking.eventId);
       if (!event) return "";
-      return '<article class="booking-item"><img class="booking-thumb" src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.title) + '" loading="lazy" decoding="async"><div class="booking-info"><span>' + escapeHtml(booking.id) + "</span><h4>" + escapeHtml(event.title) + "</h4><p>" + escapeHtml(booking.scheduleLabel) + " · " + Number(booking.quantity || 1) + '명</p></div><div class="booking-actions">' + bookingActions(booking, event) + "</div></article>";
+      var paymentText = Number(booking.totalPrice || 0) ? " · 결제 " + formatPoints(booking.totalPrice) + "원" : "";
+      return '<article class="booking-item"><img class="booking-thumb" src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.title) + '" loading="lazy" decoding="async"><div class="booking-info"><span>' + escapeHtml(booking.id) + "</span><h4>" + escapeHtml(event.title) + "</h4><p>" + escapeHtml(booking.scheduleLabel) + " · " + Number(booking.quantity || 1) + "명" + paymentText + '</p></div><div class="booking-actions">' + bookingActions(booking, event) + "</div></article>";
     }
 
     byId("upcomingBookingList").innerHTML = upcomingBookings.length

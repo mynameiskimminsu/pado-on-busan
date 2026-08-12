@@ -1208,6 +1208,14 @@ p {
   gap: 24px;
 }
 
+.event-price strong {
+  color: var(--navy-900);
+}
+
+.price-summary-row strong {
+  color: var(--coral-500);
+}
+
 .event-remaining {
   margin-top: 5px;
   color: var(--navy-800);
@@ -2382,6 +2390,40 @@ p {
 .price-row.total strong {
   font-family: "DM Sans", "Noto Sans KR", sans-serif;
   font-size: 22px;
+}
+
+.price-row.payment-total {
+  margin-bottom: 0;
+}
+
+.price-row.payment-total strong {
+  color: var(--coral-500);
+}
+
+.success-payment {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 3px 18px;
+  width: min(100%, 340px);
+  margin: 14px auto 0;
+  padding: 14px 16px;
+  border-radius: 12px;
+  background: #fff4ed;
+  text-align: left;
+}
+
+.success-payment span,
+.success-payment small {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.success-payment strong {
+  grid-row: 1 / span 2;
+  grid-column: 2;
+  align-self: center;
+  color: var(--coral-500);
+  font-size: 18px;
 }
 
 .booking-summary-card .button {
