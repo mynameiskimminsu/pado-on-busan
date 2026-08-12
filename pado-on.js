@@ -298,7 +298,7 @@
     byId("seasonTags").innerHTML = season.tags.map(function (tag) { return "<span>" + escapeHtml(tag) + "</span>"; }).join("");
     byId("seasonEventButton").setAttribute("data-target-season", seasonKey);
     byId("seasonEventButton").childNodes[0].nodeValue = season.ko + " 행사 모아보기 ";
-    document.querySelectorAll("[data-season]").forEach(function (button) {
+    document.querySelectorAll(".season-tabs [data-season]").forEach(function (button) {
       button.setAttribute("aria-selected", String(button.getAttribute("data-season") === seasonKey));
     });
   }
@@ -308,7 +308,7 @@
     return [
       '<article class="event-card" data-event-id="' + escapeHtml(event.id) + '" data-season="' + escapeHtml(event.season) + '" data-themes="' + escapeHtml(event.themes.join(" ")) + '">',
       '<div class="event-visual">',
-      '<img src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.imageAlt) + '">',
+      '<img src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.imageAlt) + '" loading="lazy" decoding="async">',
       '<span class="category-badge">' + escapeHtml(event.category) + "</span>",
       '<div class="date-badge"><strong>' + escapeHtml(event.dateNumber) + "</strong><span>" + escapeHtml(event.dateDay) + "</span></div>",
       "</div>",
@@ -355,7 +355,7 @@
     var includes = event.includes.map(function (item) { return "<li>" + icon("check") + "<span>" + escapeHtml(item) + "</span></li>"; }).join("");
     byId("dialogBody").innerHTML = [
       '<section class="dialog-detail"><div class="dialog-hero">',
-      '<img src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.imageAlt) + '">',
+      '<img src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.imageAlt) + '" decoding="async">',
       '<div class="dialog-hero-copy"><span>' + escapeHtml(event.category) + '</span><h2 id="dialogTitle">' + escapeHtml(event.title) + "</h2><p>" + icon("pin") + " " + escapeHtml(event.location + " · " + event.venue) + "</p></div></div>",
       '<div class="dialog-content"><div class="detail-layout"><div class="detail-copy">',
       "<h3>이번 바다는 이렇게 즐겨요</h3><p>" + escapeHtml(event.description) + '</p><ul class="include-list">' + includes + "</ul></div>",
@@ -385,7 +385,7 @@
       '<div class="form-grid"><label class="form-field"><span>예약자 이름</span><input name="name" autocomplete="name" maxlength="30" placeholder="이름을 입력해 주세요" required></label>',
       '<label class="form-field"><span>연락처 또는 이메일</span><input name="contact" autocomplete="email" maxlength="60" placeholder="example@email.com" required></label></div>',
       '<button class="back-link" id="backToDetail" type="button">← 행사 정보로 돌아가기</button></form>',
-      '<aside class="booking-summary-card"><div class="summary-event"><img src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.imageAlt) + '"><div><h3>' + escapeHtml(event.title) + "</h3><p>" + escapeHtml(event.location + " · " + event.time) + "</p></div></div>",
+      '<aside class="booking-summary-card"><div class="summary-event"><img src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.imageAlt) + '" decoding="async"><div><h3>' + escapeHtml(event.title) + "</h3><p>" + escapeHtml(event.location + " · " + event.time) + "</p></div></div>",
       '<div class="price-row total"><span>적립 예정</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
       '<p class="prototype-note reward-note">예약 1건 기준 · 참여 완료 후 적립</p>',
       '<button class="button button-coral" type="submit" form="bookingForm" id="confirmBooking">예약 확정하기</button>',
@@ -479,7 +479,7 @@
     byId("bookingList").innerHTML = bookings.slice(0, 8).map(function (booking) {
       var event = getEvent(booking.eventId);
       if (!event) return "";
-      return '<article class="booking-item"><img class="booking-thumb" src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.title) + '"><div class="booking-info"><span>' + escapeHtml(booking.id) + "</span><h4>" + escapeHtml(event.title) + "</h4><p>" + escapeHtml(booking.scheduleLabel) + " · " + Number(booking.quantity || 1) + '명</p></div><div class="booking-actions">' + bookingActions(booking, event) + "</div></article>";
+      return '<article class="booking-item"><img class="booking-thumb" src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.title) + '" loading="lazy" decoding="async"><div class="booking-info"><span>' + escapeHtml(booking.id) + "</span><h4>" + escapeHtml(event.title) + "</h4><p>" + escapeHtml(booking.scheduleLabel) + " · " + Number(booking.quantity || 1) + '명</p></div><div class="booking-actions">' + bookingActions(booking, event) + "</div></article>";
     }).join("");
   }
 
@@ -524,7 +524,7 @@
     var deleteButton = story.userCreated ? '<button class="story-delete" type="button" data-delete-story="' + escapeHtml(story.id) + '" aria-label="이야기 삭제">' + icon("trash") + "</button>" : "";
     return [
       '<article class="story-card" data-story-id="' + escapeHtml(story.id) + '">',
-      '<div class="story-visual"><img src="' + escapeHtml(story.image) + '" alt="' + escapeHtml(story.title) + '">' + deleteButton + "</div>",
+      '<div class="story-visual"><img src="' + escapeHtml(story.image) + '" alt="' + escapeHtml(story.title) + '" loading="lazy" decoding="async">' + deleteButton + "</div>",
       '<div class="story-body"><p class="story-meta"><span>' + escapeHtml(story.location) + "</span> · " + escapeHtml(story.date) + "</p>",
       "<h3>" + escapeHtml(story.title) + "</h3><p>" + escapeHtml(story.content) + '</p><strong class="story-author">by. ' + escapeHtml(story.author) + "</strong></div></article>"
     ].join("");
@@ -599,6 +599,9 @@
     }).catch(function (error) {
       if (requestId !== storyImageRequest) return;
       storyImageData = ""; byId("storyImage").value = ""; byId("storySubmit").disabled = false;
+      byId("storyImagePreview").src = "";
+      byId("storyImagePreview").classList.add("hidden");
+      byId("storyUploadPlaceholder").classList.remove("hidden");
       byId("storyImageStatus").textContent = error.message; showToast(error.message);
     });
   }
@@ -640,7 +643,7 @@
   }
 
   function initInteractions() {
-    document.querySelectorAll("[data-season]").forEach(function (button) { button.addEventListener("click", function () { renderSeason(button.getAttribute("data-season")); }); });
+    document.querySelectorAll(".season-tabs [data-season]").forEach(function (button) { button.addEventListener("click", function () { renderSeason(button.getAttribute("data-season")); }); });
     document.querySelectorAll("[data-season-filter]").forEach(function (button) { button.addEventListener("click", function () { setSeasonFilter(button.getAttribute("data-season-filter")); }); });
     byId("seasonEventButton").addEventListener("click", function () { setSeasonFilter(this.getAttribute("data-target-season") || "summer"); byId("events").scrollIntoView({ behavior: "smooth" }); });
     byId("themeFilter").addEventListener("change", renderEvents);
