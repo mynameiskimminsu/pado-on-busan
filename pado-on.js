@@ -74,18 +74,6 @@
       includes: ["요가 매트 대여", "전문 강사 진행", "웰컴 티 1잔"]
     },
     {
-      id: "songjeong-surf", title: "송정 첫 파도 서핑", season: "summer", location: "송정",
-      venue: "송정해수욕장 서핑존", category: "액티비티", dateNumber: "08.16", dateDay: "SUN", time: "09:00", duration: "120분", seats: 6, reward: 800,
-      image: "assets/songjeong-surf.png", imageAlt: "송정 해변에서 서핑보드를 들고 수업을 듣는 입문자들", themes: ["activity"],
-      tags: ["입문자 대상", "장비 포함", "소규모"],
-      schedules: [
-        { value: "2026-08-16T09:00", label: "2026년 8월 16일 (일) 09:00" },
-        { value: "2026-08-23T09:00", label: "2026년 8월 23일 (일) 09:00" }
-      ],
-      description: "처음 파도를 만나는 사람을 위한 6인 이하 입문 클래스입니다. 안전 교육부터 패들링, 테이크오프까지 차근차근 배워요.",
-      includes: ["서핑보드·슈트", "안전 교육", "샤워실 이용"]
-    },
-    {
       id: "dadaepo-eco", title: "다대포 노을 생태 산책", season: "autumn", location: "다대포",
       venue: "다대포 꿈의 낙조분수 앞", category: "바다생태", dateNumber: "10.10", dateDay: "SAT", time: "17:30", duration: "90분", seats: 18, reward: 300,
       image: "assets/dadaepo-sunset.png", imageAlt: "다대포의 붉은 노을과 습지를 걷는 가족 여행자", themes: ["ecology"],
