@@ -221,7 +221,7 @@
     status: "completed", rewarded: true, createdAt: "2026-08-01T09:00:00+09:00", completedAt: "2026-08-08T20:00:00+09:00"
   };
   var defaultWallet = {
-    points: 500,
+    points: 300,
     history: [{ bookingId: "OS-0808-0001", title: "광안리 선셋 비치요가 참여", points: 500, createdAt: "2026-08-08T20:00:00+09:00" }]
   };
   var defaultStories = [
@@ -255,14 +255,12 @@
     if (!bookings.some(function (booking) { return booking.id === defaultBooking.id; })) bookings.push(copy(defaultBooking));
   }
   var wallet = loadJson(STORAGE_WALLET, null);
+  var isFirstWallet = !wallet || typeof wallet.points !== "number";
   if (!wallet || typeof wallet.points !== "number") {
     var legacyWallet = loadJson(LEGACY_WALLET, null);
-    wallet = legacyWallet && typeof legacyWallet.points === "number" ? legacyWallet : { points: 0, history: [] };
+    wallet = legacyWallet && typeof legacyWallet.points === "number" ? legacyWallet : copy(defaultWallet);
+    isFirstWallet = !(legacyWallet && typeof legacyWallet.points === "number");
     if (!Array.isArray(wallet.history)) wallet.history = [];
-    if (!wallet.history.some(function (item) { return item.bookingId === defaultBooking.id; })) {
-      wallet.points += defaultWallet.points;
-      wallet.history.push(copy(defaultWallet.history[0]));
-    }
   }
   var userStories = loadJson(STORAGE_STORIES, []);
 
@@ -784,7 +782,7 @@
   function resetFilters() { byId("themeFilter").value = "all"; byId("locationFilter").value = "all"; setSeasonFilter("all"); }
 
   function resetPrototypeData() {
-    if (!window.confirm("새로 만든 예약과 바다 이야기를 지우고, 완료 체험과 500 SEA 포인트 예시를 다시 불러올까요?")) return;
+    if (!window.confirm("새로 만든 예약과 바다 이야기를 지우고, 완료 체험과 300 SEA 포인트 예시를 다시 불러올까요?")) return;
     bookings = [copy(defaultBooking)]; wallet = copy(defaultWallet); userStories = [];
     saveState(); saveStories([]); resetFilters(); renderAllAccountData(); renderStories(); renderMyPhotos(); toggleStoryForm(false);
     showToast("데모 데이터가 다시 준비됐어요.");
@@ -875,7 +873,9 @@
 
   function init() {
     if (!Array.isArray(bookings)) bookings = [copy(defaultBooking)];
-    if (localStorage.getItem(POINT_USAGE_FIX) !== "done") {
+    if (isFirstWallet) {
+      localStorage.setItem(POINT_USAGE_FIX, "done");
+    } else if (localStorage.getItem(POINT_USAGE_FIX) !== "done") {
       wallet.points = Math.max(0, Number(wallet.points || 0) - 200);
       localStorage.setItem(POINT_USAGE_FIX, "done");
     }
