@@ -127,7 +127,7 @@
     },
     {
       id: "cheongsapo-sunrise-contest", title: "청사포 이색 새해 일출사진 대회", season: "winter", location: "청사포",
-      venue: "청사포 다릿돌전망대 앞", category: "사진·문화", dateNumber: "01.01", dateDay: "FRI", time: "07:32", duration: "150분", seats: 40, unlimited: true, infoOnly: true, reward: 1000,
+      venue: "청사포 다릿돌전망대 앞", category: "사진·문화", dateNumber: "01.01", dateDay: "FRI", time: "07:32", hideDuration: true, seats: 40, unlimited: true, infoOnly: true, reward: 1000,
       image: "assets/winter-sunrise-contest.png", imageAlt: "청사포의 새해 일출을 촬영하는 사진 대회 참가자들", themes: ["culture"],
       tags: ["예약 없이 참가", "1,000 SEA P", "사진 1점 제출"],
       schedules: [{ value: "2027-01-01T07:32", label: "2027년 1월 1일 (금) 07:32" }],
@@ -427,7 +427,7 @@
       "<h3>이번 바다는 이렇게 즐겨요</h3><p>" + escapeHtml(event.description) + '</p><ul class="include-list">' + includes + "</ul></div>",
       '<aside class="detail-summary">',
       '<div class="summary-row"><span>일정</span><strong>' + escapeHtml(event.schedules[0].label) + "</strong></div>",
-      '<div class="summary-row"><span>' + escapeHtml(event.durationLabel || "소요 시간") + '</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
+      event.hideDuration ? "" : '<div class="summary-row"><span>' + escapeHtml(event.durationLabel || "소요 시간") + '</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
       '<div class="summary-row"><span>' + (event.infoOnly ? escapeHtml(event.infoLabel || "관람 안내") : "첫 일정 신청 가능") + '</span><strong>' + (event.infoOnly ? escapeHtml(event.infoSummary || "예약 없이 자유 관람") : formatAvailability(event, remaining)) + "</strong></div>",
       '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1" + getPriceUnit(event) + " " + formatPoints(price) + "원" : "무료") + "</strong></div>",
       '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>' + formatReward(event) + "</strong></div>",
