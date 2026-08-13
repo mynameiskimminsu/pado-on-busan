@@ -2456,6 +2456,14 @@ p {
   font-size: 22px;
 }
 
+.point-use-button { position: relative; z-index: 1; width: 100%; margin-top: 18px; border: 1px solid rgba(255,255,255,.4); background: #9cebf1; color: var(--navy-900); }
+.point-use-guide { position: relative; z-index: 1; margin-top: 14px; padding: 18px; border: 1px solid rgba(255,255,255,.2); border-radius: 16px; background: rgba(255,255,255,.1); }
+.point-use-guide h4 { margin: 0 0 8px; }
+.point-use-guide p { margin: 0; color: rgba(255,255,255,.82); font-size: 13px; line-height: 1.7; }
+.point-use-guide small { display: block; margin-top: 7px; color: #9cebf1; text-align: center; letter-spacing: .08em; }
+.point-barcode { margin-top: 16px; padding: 10px; border-radius: 8px; background: white; }
+.point-barcode span { display: block; height: 70px; background: repeating-linear-gradient(90deg,#061c27 0 2px,transparent 2px 5px,#061c27 5px 9px,transparent 9px 12px,#061c27 12px 13px,transparent 13px 17px); }
+
 .price-row.payment-total {
   margin-bottom: 0;
 }

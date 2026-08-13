@@ -587,6 +587,7 @@
   function renderRewards() {
     byId("headerPoints").textContent = formatPoints(wallet.points);
     byId("rewardPoints").textContent = formatPoints(wallet.points);
+    byId("barcodePoints").textContent = formatPoints(wallet.points);
     var pending = bookings.filter(function (booking) { return booking.status === "reserved"; }).reduce(function (sum, booking) {
       var event = getEvent(booking.eventId); return sum + (event ? event.reward : 0);
     }, 0);
@@ -634,7 +635,7 @@
   }
 
   function renderStories() {
-    byId("storyGrid").innerHTML = userStories.concat(defaultStories).map(storyCard).join("");
+    byId("storyGrid").innerHTML = userStories.concat([exampleMyPhoto], defaultStories).map(storyCard).join("");
   }
 
   function renderMyPhotos() {
@@ -783,6 +784,12 @@
   }
 
   function initInteractions() {
+    byId("openPointUse").addEventListener("click", function () {
+      var guide = byId("pointUseGuide");
+      var expanded = guide.classList.toggle("hidden") === false;
+      this.setAttribute("aria-expanded", String(expanded));
+      this.textContent = expanded ? "포인트 사용 안내 닫기" : "포인트 사용하기";
+    });
     document.querySelectorAll(".season-tabs [data-season]").forEach(function (button) { button.addEventListener("click", function () { renderSeason(button.getAttribute("data-season")); }); });
     document.querySelectorAll("[data-season-filter]").forEach(function (button) { button.addEventListener("click", function () { setSeasonFilter(button.getAttribute("data-season-filter")); }); });
     byId("seasonEventButton").addEventListener("click", function () { setSeasonFilter(this.getAttribute("data-target-season") || "summer"); byId("events").scrollIntoView({ behavior: "smooth" }); });
