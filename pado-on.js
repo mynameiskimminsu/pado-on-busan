@@ -223,26 +223,26 @@
   };
   var defaultStories = [
     {
-      id: "story-songjeong", author: "해나", title: "송정에서 처음 파도를 탄 날", location: "송정", date: "2026.08.09",
-      image: "assets/songjeong-surf.png", userCreated: false,
-      content: "세 번 넘어지고 네 번째에 보드 위에 섰어요. 초보자 수업이라 천천히 배울 수 있었고, 돌아오는 길까지 바다 냄새가 오래 남았습니다."
+      id: "story-igidae", author: "해나", title: "이기대에서 잠시 멈춘 아침", location: "이기대", date: "2026.08.09",
+      image: "assets/story-igidae-walk.webp", userCreated: false,
+      content: "바닷길을 걷다가 전망대에 잠시 멈췄어요. 파도와 멀리 보이는 도시를 한 장에 담으니 평범한 아침도 특별한 추억이 됐습니다."
     },
     {
-      id: "story-dadaepo", author: "민준네", title: "다대포 노을이 물든 가족 산책", location: "다대포", date: "2026.07.26",
-      image: "assets/dadaepo-sunset.png", userCreated: false,
-      content: "갯벌의 작은 게를 찾아보고 노을 앞에서 가족사진도 남겼어요. 아이가 부산에서 가장 기억에 남는 순간이라고 했습니다."
+      id: "story-huinnyeoul", author: "민준네", title: "흰여울 앞 작은 배들", location: "영도", date: "2026.07.26",
+      image: "assets/story-huinnyeoul-boats.webp", userCreated: false,
+      content: "동네 아래 작은 포구에 알록달록한 배들이 쉬고 있었어요. 갈매기와 잔잔한 물결까지 부산다운 오후 풍경으로 남겼습니다."
     },
     {
-      id: "story-gwangalli", author: "지윤", title: "광안대교 아래, 여름밤 한 장", location: "광안리", date: "2026.08.07",
-      image: "assets/pado-on-hero.png", userCreated: false,
-      content: "해가 진 뒤 켜진 광안대교를 천천히 바라봤어요. 휴대폰으로 찍은 사진인데도 부산의 여름빛이 그대로 담겼습니다."
+      id: "story-sea-glass", author: "지윤", title: "모래 위에서 찾은 작은 바다", location: "송도", date: "2026.08.07",
+      image: "assets/story-sea-glass.webp", userCreated: false,
+      content: "파도 가까이에서 조개와 바다유리를 하나씩 찾았어요. 작은 조각들을 펼쳐 놓으니 오늘 걸었던 바닷길이 그대로 떠올랐습니다."
     }
   ];
 
   var exampleMyPhoto = {
-    id: "my-photo-example", author: "김바다", title: "다대포 노을을 담은 저녁", location: "다대포", date: "2026.08.03",
-    image: "assets/dadaepo-sunset.png", userCreated: false, example: true,
-    content: "해가 바다 가까이 내려올 때 모래 위에 번지는 주황빛을 담았어요. 나만의 부산 바다 사진은 이렇게 한곳에서 모아볼 수 있어요."
+    id: "my-photo-example", author: "김바다", title: "바다가 보이는 영도 골목", location: "영도", date: "2026.08.03",
+    image: "assets/story-yeongdo-cat.webp", userCreated: false, example: true,
+    content: "파란 담벼락 옆 고양이와 골목 끝 반짝이는 바다를 함께 담았어요. 나만의 부산 바다 사진은 이렇게 한곳에서 모아볼 수 있어요."
   };
 
   var bookings = loadJson(STORAGE_BOOKINGS, null);
