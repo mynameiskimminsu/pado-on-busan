@@ -127,11 +127,12 @@
     },
     {
       id: "cheongsapo-sunrise-contest", title: "청사포 이색 새해 일출사진 대회", season: "winter", location: "청사포",
-      venue: "청사포 다릿돌전망대 앞", category: "사진·문화", dateNumber: "01.01", dateDay: "FRI", time: "07:32", duration: "150분", seats: 40, unlimited: true, reward: 1000,
+      venue: "청사포 다릿돌전망대 앞", category: "사진·문화", dateNumber: "01.01", dateDay: "FRI", time: "07:32", duration: "150분", seats: 40, unlimited: true, infoOnly: true, reward: 0,
       image: "assets/winter-sunrise-contest.png", imageAlt: "청사포의 새해 일출을 촬영하는 사진 대회 참가자들", themes: ["culture"],
-      tags: ["누구나 참가", "휴대폰 참여 가능", "사진 1점 제출"],
+      tags: ["예약 없이 참가", "휴대폰 참여 가능", "사진 1점 제출"],
       schedules: [{ value: "2027-01-01T07:32", label: "2027년 1월 1일 (금) 07:32" }],
-      description: "나이와 촬영 경험에 관계없이 누구나 참가해 새해 첫 일출을 나만의 시선으로 담는 현장 대회입니다. 휴대폰과 카메라 모두 사용할 수 있으며 한 장의 사진을 제출하면 됩니다. 해당 시간은 일출 예정 시간이며, 사진은 당일 23:59까지 제출해 주세요.",
+      description: "별도 예약 없이 누구나 새해 첫 일출을 나만의 시선으로 담아 참가하는 사진 대회입니다. 휴대폰과 카메라 모두 사용할 수 있으며 한 장의 사진을 제출하면 됩니다. 해당 시간은 일출 예정 시간이며, 사진은 당일 23:59까지 제출해 주세요.",
+      infoLabel: "참가 안내", infoSummary: "예약 없이 누구나 참가", infoNote: "게시 안내 전용 이벤트입니다. 별도 예약 없이 사진을 촬영한 뒤 당일 23:59까지 작품을 제출해 주세요.",
       includes: ["촬영 구역 안내", "작품 제출 가이드", "기념 포토 카드"]
     },
     {
@@ -427,11 +428,11 @@
       '<aside class="detail-summary">',
       '<div class="summary-row"><span>일정</span><strong>' + escapeHtml(event.schedules[0].label) + "</strong></div>",
       '<div class="summary-row"><span>' + escapeHtml(event.durationLabel || "소요 시간") + '</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
-      '<div class="summary-row"><span>' + (event.infoOnly ? "관람 안내" : "첫 일정 신청 가능") + '</span><strong>' + (event.infoOnly ? "예약 없이 자유 관람" : formatAvailability(event, remaining)) + "</strong></div>",
+      '<div class="summary-row"><span>' + (event.infoOnly ? escapeHtml(event.infoLabel || "관람 안내") : "첫 일정 신청 가능") + '</span><strong>' + (event.infoOnly ? escapeHtml(event.infoSummary || "예약 없이 자유 관람") : formatAvailability(event, remaining)) + "</strong></div>",
       '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1" + getPriceUnit(event) + " " + formatPoints(price) + "원" : "무료") + "</strong></div>",
       '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>' + formatReward(event) + "</strong></div>",
       event.infoOnly
-        ? '<div class="prototype-note">안내 전용 이벤트입니다. 별도 예약 없이 행사 당일 자유롭게 관람해 주세요.</div>'
+        ? '<div class="prototype-note">' + escapeHtml(event.infoNote || "안내 전용 이벤트입니다. 별도 예약 없이 행사 당일 자유롭게 관람해 주세요.") + '</div>'
         : '<button class="button button-dark" id="reserveFromDetail" type="button"' + (!available ? " disabled" : "") + ">" + (!available ? (event.registrationOnly ? "신청 마감" : "예약 마감") : event.registrationOnly ? "참가 신청하기" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
       "</aside></div></div></section>"
     ].join("");
