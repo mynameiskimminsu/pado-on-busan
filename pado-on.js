@@ -214,18 +214,6 @@
       includes: ["참가 번호표", "우승자 추가 포인트 지급 예정", "작품 제출 안내", "개인 화구 제공 없음"]
     },
     {
-      id: "haeundae-coastal-bike", title: "해운대 가을 해변 자전거 타기", season: "autumn", location: "해운대",
-      venue: "해운대해수욕장 이벤트광장", category: "액티비티", dateNumber: "10.16", dateDay: "SAT", time: "09:30", duration: "120분", seats: 20, reward: 500, price: 30000,
-      image: "assets/songjeong-surf.png", imageAlt: "선선한 가을 부산 해변을 따라 자전거를 타는 여행자", themes: ["activity"],
-      tags: ["자전거 대여 포함", "해안 코스", "안전 장비 제공"],
-      schedules: [
-        { value: "2027-10-16T09:30", label: "2027년 10월 16일 (토) 09:30" },
-        { value: "2027-10-23T09:30", label: "2027년 10월 23일 (토) 09:30" }
-      ],
-      description: "해운대에서 송정으로 이어지는 가을 해안 코스를 자전거로 달리는 가이드 동행 체험입니다. 자전거와 헬멧을 대여해 가볍게 참여할 수 있어요.",
-      includes: ["자전거 대여", "헬멧·안전 장비", "코스 가이드 동행"]
-    },
-    {
       id: "cheongsapo-breakwater-fishing", title: "청사포 겨울 방파제 낚시", season: "winter", location: "청사포",
       venue: "청사포항 안전 낚시 구역", category: "바다생태", dateNumber: "01.23", dateDay: "SAT", time: "08:00", duration: "180분", seats: 30, reward: 300,
       image: "assets/winter-sunrise-contest.png", imageAlt: "겨울 아침 부산 방파제의 안전 구역에서 낚시를 즐기는 참가자", themes: ["ecology"],
