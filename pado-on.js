@@ -106,10 +106,10 @@
     },
     {
       id: "haeundae-parasol", title: "해운대 파라솔 자리 대여", season: "summer", location: "해운대",
-      venue: "해운대해수욕장 이벤트존", category: "휴양", dateNumber: "07.01", dateDay: "THU", time: "10:00", duration: "5시간", seats: 24, reward: 300, price: 20000, capacityUnit: "개", quantityUnit: "개", quantityLabel: "파라솔 수", priceUnit: "파라솔", maxPerBooking: 1,
+      venue: "해운대해수욕장 이벤트존", category: "휴양", dateNumber: "07.01", dateDay: "THU", time: "15:00", duration: "5시간", durationLabel: "대여 시간", calendarBooking: true, seats: 24, reward: 300, price: 20000, capacityUnit: "개", quantityUnit: "개", quantityLabel: "파라솔 수", priceUnit: "파라솔", maxPerBooking: 1,
       image: "assets/summer-parasol.png", imageAlt: "해운대 바다의 지정 파라솔 아래에서 쉬는 여행자들", themes: ["relax"],
       tags: ["파라솔 수로 예약", "5시간 이용", "매일 운영"],
-      schedules: createDailySchedules("2027-07-01", "2027-08-31", "10:00"),
+      schedules: createDailySchedules("2027-07-01", "2027-08-31", "15:00"),
       description: "7월 1일부터 8월 31일까지 매일 운영되는 해운대 파라솔 대여입니다. 인원이 아닌 필요한 파라솔 수를 선택해 예약하고 5시간 동안 이용할 수 있어요.",
       includes: ["파라솔 지정석", "비치 매트", "5시간 이용 안내"]
     },
@@ -426,7 +426,7 @@
       "<h3>이번 바다는 이렇게 즐겨요</h3><p>" + escapeHtml(event.description) + '</p><ul class="include-list">' + includes + "</ul></div>",
       '<aside class="detail-summary">',
       '<div class="summary-row"><span>일정</span><strong>' + escapeHtml(event.schedules[0].label) + "</strong></div>",
-      '<div class="summary-row"><span>소요 시간</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
+      '<div class="summary-row"><span>' + escapeHtml(event.durationLabel || "소요 시간") + '</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
       '<div class="summary-row"><span>' + (event.infoOnly ? "관람 안내" : "첫 일정 신청 가능") + '</span><strong>' + (event.infoOnly ? "예약 없이 자유 관람" : formatAvailability(event, remaining)) + "</strong></div>",
       '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1" + getPriceUnit(event) + " " + formatPoints(price) + "원" : "무료") + "</strong></div>",
       '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>' + formatReward(event) + "</strong></div>",
@@ -452,7 +452,9 @@
       '<section class="booking-step"><header class="step-header"><span>RESERVATION · STEP 2 OF 2</span>',
       '<h2 id="dialogTitle">' + (event.registrationOnly ? "버스킹 참가를 신청해 주세요" : "방문할 날짜를 골라주세요") + '</h2><p>' + (event.registrationOnly ? "참석은 자유롭고, 신청 정보는 예상 참여 인원 확인에 사용됩니다." : "입력한 예약 정보는 이 브라우저에만 저장됩니다.") + "</p></header>",
       '<div class="booking-layout"><form class="booking-form" id="bookingForm">',
-      '<label class="form-field"><span>방문 일정</span><select id="bookingSchedule" name="schedule" required>' + options + "</select></label>",
+      event.calendarBooking
+        ? '<label class="form-field"><span>방문 일정</span><input id="bookingDate" type="date" min="2027-07-01" max="2027-08-31" value="' + firstAvailableSchedule.value.slice(0, 10) + '" required><input id="bookingSchedule" name="schedule" type="hidden" value="' + escapeHtml(firstAvailableSchedule.value) + '"><small>달력에서 7월 1일~8월 31일 중 날짜를 선택해 주세요.</small></label>'
+        : '<label class="form-field"><span>방문 일정</span><select id="bookingSchedule" name="schedule" required>' + options + "</select></label>",
       '<div class="schedule-remaining" aria-live="polite"><span>선택 일정 신청 가능</span><strong id="selectedScheduleRemaining">' + formatAvailability(event, remaining) + '</strong></div>',
       '<div class="guest-field"><span>' + (event.quantityLabel || (event.quantityUnit === "팀" ? "참가 팀" : "참여 인원")) + '<small id="bookingMaxGuide">한 번에 최대 ' + formatQuantity(event, maxQuantity) + '</small></span><div class="stepper">',
       '<button type="button" id="qtyMinus" aria-label="인원 줄이기">' + icon("minus") + '</button><output id="qtyOutput" aria-live="polite">1</output><button type="button" id="qtyPlus" aria-label="인원 늘리기">' + icon("plus") + "</button></div></div>",
@@ -486,6 +488,10 @@
     byId("qtyMinus").addEventListener("click", function () { updateQuantity(bookingQty - 1); });
     byId("qtyPlus").addEventListener("click", function () { updateQuantity(bookingQty + 1); });
     byId("bookingSchedule").addEventListener("change", updateScheduleAvailability);
+    if (event.calendarBooking) byId("bookingDate").addEventListener("change", function () {
+      byId("bookingSchedule").value = this.value + "T15:00";
+      updateScheduleAvailability();
+    });
     byId("backToDetail").addEventListener("click", function () { renderDialogDetail(event); });
     byId("bookingForm").addEventListener("submit", function (formEvent) {
       formEvent.preventDefault();
