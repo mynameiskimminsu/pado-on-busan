@@ -286,6 +286,12 @@
     }
   ];
 
+  var exampleMyPhoto = {
+    id: "my-photo-example", author: "김바다", title: "다대포 노을을 담은 저녁", location: "다대포", date: "2026.08.03",
+    image: "assets/dadaepo-sunset.png", userCreated: false, example: true,
+    content: "해가 바다 가까이 내려올 때 모래 위에 번지는 주황빛을 담았어요. 나만의 부산 바다 사진은 이렇게 한곳에서 모아볼 수 있어요."
+  };
+
   var bookings = loadJson(STORAGE_BOOKINGS, null);
   if (!Array.isArray(bookings)) {
     var legacyBookings = loadJson(LEGACY_BOOKINGS, []);
@@ -654,9 +660,10 @@
   function storyCard(story) {
     var editButton = story.userCreated ? '<button class="story-edit" type="button" data-edit-story="' + escapeHtml(story.id) + '" aria-label="이야기 수정">수정</button>' : "";
     var deleteButton = story.userCreated ? '<button class="story-delete" type="button" data-delete-story="' + escapeHtml(story.id) + '" aria-label="이야기 삭제">' + icon("trash") + "</button>" : "";
+    var exampleBadge = story.example ? '<span class="story-example-badge">예시 사진</span>' : "";
     return [
       '<article class="story-card" data-story-id="' + escapeHtml(story.id) + '">',
-      '<div class="story-visual"><img src="' + escapeHtml(story.image) + '" alt="' + escapeHtml(story.title) + '" loading="lazy" decoding="async">' + editButton + deleteButton + "</div>",
+      '<div class="story-visual"><img src="' + escapeHtml(story.image) + '" alt="' + escapeHtml(story.title) + '" loading="lazy" decoding="async">' + exampleBadge + editButton + deleteButton + "</div>",
       '<div class="story-body"><p class="story-meta"><span>' + escapeHtml(story.location) + "</span> · " + escapeHtml(story.date) + "</p>",
       "<h3>" + escapeHtml(story.title) + "</h3><p>" + escapeHtml(story.content) + '</p><strong class="story-author">by. ' + escapeHtml(story.author) + "</strong></div></article>"
     ].join("");
@@ -669,10 +676,11 @@
   function renderMyPhotos() {
     var grid = byId("myPhotoGrid");
     var empty = byId("myPhotosEmpty");
-    byId("myPhotoCount").textContent = String(userStories.length);
-    grid.innerHTML = userStories.map(storyCard).join("");
-    grid.classList.toggle("hidden", userStories.length === 0);
-    empty.classList.toggle("hidden", userStories.length !== 0);
+    var displayedPhotos = userStories.concat([exampleMyPhoto]);
+    byId("myPhotoCount").textContent = String(displayedPhotos.length);
+    grid.innerHTML = displayedPhotos.map(storyCard).join("");
+    grid.classList.remove("hidden");
+    empty.classList.add("hidden");
   }
 
   function toggleStoryForm(show) {

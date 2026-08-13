@@ -1387,6 +1387,20 @@ p {
   transform: scale(1.035);
 }
 
+.story-example-badge {
+  position: absolute;
+  top: 13px;
+  left: 13px;
+  padding: 7px 11px;
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 999px;
+  background: rgba(4, 40, 54, 0.72);
+  color: white;
+  font-size: 10px;
+  font-weight: 800;
+  backdrop-filter: blur(8px);
+}
+
 .story-delete,
 .story-edit {
   position: absolute;
