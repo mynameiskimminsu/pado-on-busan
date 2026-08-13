@@ -91,18 +91,6 @@
       includes: ["요가 매트 대여", "전문 강사 진행", "웰컴 티 1잔"]
     },
     {
-      id: "dadaepo-eco", title: "다대포 노을 생태 산책", season: "autumn", location: "다대포",
-      venue: "다대포 꿈의 낙조분수 앞", category: "바다생태", dateNumber: "10.10", dateDay: "SAT", time: "17:30", duration: "90분", seats: 18, reward: 300,
-      image: "assets/dadaepo-sunset.png", imageAlt: "다대포의 붉은 노을과 습지를 걷는 가족 여행자", themes: ["ecology"],
-      tags: ["가족 추천", "해설 동행", "노을 관찰"],
-      schedules: [
-        { value: "2026-10-10T17:30", label: "2026년 10월 10일 (토) 17:30" },
-        { value: "2026-10-17T17:20", label: "2026년 10월 17일 (토) 17:20" }
-      ],
-      description: "낙동강 하구와 바다가 만나는 다대포에서 해설사와 함께 갯벌 생태를 살피고, 부산의 가장 넓은 노을을 감상합니다.",
-      includes: ["전문 생태 해설", "관찰 노트", "가족 미션 카드"]
-    },
-    {
       id: "cheongsapo-tea", title: "청사포 일출 차담", season: "winter", location: "청사포",
       venue: "청사포 다릿돌전망대 입구", category: "휴양", dateNumber: "12.19", dateDay: "SAT", time: "07:00", duration: "80분", seats: 10, reward: 500, price: 22000,
       image: "assets/pado-on-hero.png", imageAlt: "푸른 시간대의 고요한 부산 바다와 빛나는 다리", themes: ["relax"],
@@ -158,7 +146,7 @@
     },
     {
       id: "gijang-crab-boat", title: "기장 꽃게잡이 & 선상 꽃게라면", season: "autumn", location: "기장",
-      venue: "대변항 체험어선 승선장", category: "바다생태", dateNumber: "10.24", dateDay: "SAT", time: "10:00", duration: "150분", seats: 12, reward: 800, price: 65000,
+      venue: "대변항 체험어선 승선장", category: "바다생태", dateNumber: "10.24", dateDay: "SAT", time: "10:00", duration: "4시간", seats: 12, reward: 800, price: 65000,
       image: "assets/spring-clam-game.png", imageAlt: "부산 바다에서 꽃게를 잡고 선상 체험을 즐기는 가족 여행자", themes: ["ecology"],
       tags: ["꽃게잡이", "선상 꽃게라면", "구명조끼 제공"],
       schedules: [
@@ -170,9 +158,9 @@
     },
     {
       id: "gwangalli-fireworks", title: "광안리 바다 불꽃축제", season: "autumn", location: "광안리",
-      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "11.07", dateDay: "SAT", time: "18:00", duration: "180분", seats: 200, reward: 100,
-      image: "assets/pado-on-hero.png", imageAlt: "광안대교와 부산 바다를 배경으로 펼쳐지는 밤의 불꽃축제", themes: ["culture"],
-      tags: ["무료 참가", "개인 돗자리 가능", "음식 지참 가능"],
+      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "11.07", dateDay: "SAT", time: "18:00", duration: "180분", seats: 200, unlimited: true, reward: 100,
+      image: "assets/gwangalli-fireworks.webp", imageAlt: "광안대교 위 밤하늘을 화려하게 수놓은 광안리 불꽃축제", themes: ["culture"],
+      tags: ["무료 참가", "인원 제한 없음", "돗자리·음식 지참 가능"],
       schedules: [{ value: "2026-11-07T18:00", label: "2026년 11월 7일 (토) 18:00" }],
       description: "광안리 바다 위를 수놓는 불꽃을 자유롭게 감상하는 무료 행사입니다. 개인 돗자리와 음식은 가져올 수 있으며, 현장에서 돗자리와 음식은 제공하지 않습니다.",
       includes: ["관람 구역 안내", "안전요원 배치", "돗자리·음식 제공 없음"]
@@ -197,11 +185,11 @@
     },
     {
       id: "haeundae-autumn-busking", title: "해운대 가을맞이 바다 버스킹", season: "autumn", location: "해운대",
-      venue: "해운대해수욕장 이벤트광장", category: "사진·문화", dateNumber: "09.26", dateDay: "SAT", time: "17:00", duration: "120분", seats: 120, reward: 200, registrationOnly: true,
-      image: "assets/dadaepo-sunset.png", imageAlt: "가을 해운대 바다에서 자유롭게 음악 공연을 즐기는 시민들", themes: ["culture"],
-      tags: ["무료 참가", "자유 관람", "참가 신청"],
+      venue: "해운대해수욕장 이벤트광장", category: "사진·문화", dateNumber: "09.26", dateDay: "SAT", time: "17:00", duration: "120분", seats: 20, reward: 200, registrationOnly: true, capacityUnit: "팀", quantityUnit: "팀", quantityLabel: "참가 팀", maxPerBooking: 1,
+      image: "assets/autumn-busking.webp", imageAlt: "단풍과 억새로 꾸민 가을 해운대 바다 무대에서 공연하는 버스킹 팀", themes: ["culture"],
+      tags: ["20팀 신청", "가을 버스킹", "참가 신청"],
       schedules: [{ value: "2026-09-26T17:00", label: "2026년 9월 26일 (토) 17:00" }],
-      description: "선선한 가을 바다와 함께 지역 뮤지션의 공연을 자유롭게 즐기는 무료 버스킹입니다. 누구나 현장에서 관람할 수 있고, 예약은 좌석 지정이 아닌 참가 신청을 받기 위한 절차입니다.",
+      description: "선선한 가을 바다를 배경으로 공연할 버스킹 20팀을 모집합니다. 예약은 좌석 지정이 아닌 공연 참가 팀 신청을 받기 위한 절차이며, 관람객은 자유롭게 공연을 즐길 수 있습니다.",
       includes: ["자유 관람", "공연 일정 안내", "예약은 참가 신청 용도"]
     },
     {
@@ -346,6 +334,10 @@
   function formatCapacity(event, count) { return count + (event.capacityUnit || "자리"); }
   function formatQuantity(event, count) { return count + (event.quantityUnit || "명"); }
   function getPriceUnit(event) { return event.priceUnit || "인"; }
+  function formatAvailability(event, count) {
+    if (event.unlimited) return "인원 제한 없음";
+    return formatCapacity(event, count) + (event.registrationOnly ? " 신청 가능" : " 남음");
+  }
 
   function getCalendarScheduleKey(event) {
     return event.schedules.reduce(function (earliest, schedule) {
@@ -361,6 +353,7 @@
   }
 
   function getRemaining(event, scheduleValue) {
+    if (event.unlimited) return Infinity;
     var selectedSchedule = scheduleValue || (event.schedules[0] && event.schedules[0].value);
     return Math.max(0, event.seats - getReservedCount(event.id, selectedSchedule));
   }
@@ -405,7 +398,7 @@
       "<h3>" + escapeHtml(event.title) + "</h3>",
       '<div class="event-tags">' + event.tags.map(function (tag) { return "<span>" + escapeHtml(tag) + "</span>"; }).join("") + "</div>",
       '<div class="event-card-footer">',
-      '<div class="event-price"><strong>' + (price ? formatPoints(price) + "원" : "무료") + '</strong><small>' + (price ? "1" + getPriceUnit(event) + " 기준 · " : "") + '+' + formatPoints(event.reward) + ' SEA P</small><span class="event-remaining">' + formatCapacity(event, remaining) + ' 남음</span></div>',
+      '<div class="event-price"><strong>' + (price ? formatPoints(price) + "원" : "무료") + '</strong><small>' + (price ? "1" + getPriceUnit(event) + " 기준 · " : "") + '+' + formatPoints(event.reward) + ' SEA P</small><span class="event-remaining">' + formatAvailability(event, remaining) + '</span></div>',
       '<button type="button" data-open-event="' + escapeHtml(event.id) + '"' + (!available ? ' class="sold-out"' : "") + ">" + (!available ? "마감" : "자세히 보기") + " " + icon("arrow") + "</button>",
       "</div></div></article>"
     ].join("");
@@ -455,7 +448,7 @@
       '<aside class="detail-summary">',
       '<div class="summary-row"><span>일정</span><strong>' + escapeHtml(event.schedules[0].label) + "</strong></div>",
       '<div class="summary-row"><span>소요 시간</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
-      '<div class="summary-row"><span>첫 일정 신청 가능</span><strong>' + formatCapacity(event, remaining) + "</strong></div>",
+      '<div class="summary-row"><span>첫 일정 신청 가능</span><strong>' + formatAvailability(event, remaining) + "</strong></div>",
       '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1" + getPriceUnit(event) + " " + formatPoints(price) + "원" : "무료") + "</strong></div>",
       '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
       '<button class="button button-dark" id="reserveFromDetail" type="button"' + (!available ? " disabled" : "") + ">" + (!available ? (event.registrationOnly ? "신청 마감" : "예약 마감") : event.registrationOnly ? "참가 신청하기" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
@@ -472,14 +465,14 @@
     var maxQuantity = Math.max(1, Math.min(Number(event.maxPerBooking || 5), remaining));
     var options = event.schedules.map(function (schedule) {
       var scheduleRemaining = getRemaining(event, schedule.value);
-      return '<option value="' + escapeHtml(schedule.value) + '"' + (schedule.value === firstAvailableSchedule.value ? " selected" : "") + (scheduleRemaining === 0 ? " disabled" : "") + '>' + escapeHtml(schedule.label) + " · " + formatCapacity(event, scheduleRemaining) + " 남음</option>";
+      return '<option value="' + escapeHtml(schedule.value) + '"' + (schedule.value === firstAvailableSchedule.value ? " selected" : "") + (scheduleRemaining === 0 ? " disabled" : "") + '>' + escapeHtml(schedule.label) + " · " + formatAvailability(event, scheduleRemaining) + "</option>";
     }).join("");
     byId("dialogBody").innerHTML = [
       '<section class="booking-step"><header class="step-header"><span>RESERVATION · STEP 2 OF 2</span>',
       '<h2 id="dialogTitle">' + (event.registrationOnly ? "버스킹 참가를 신청해 주세요" : "방문할 날짜를 골라주세요") + '</h2><p>' + (event.registrationOnly ? "참석은 자유롭고, 신청 정보는 예상 참여 인원 확인에 사용됩니다." : "입력한 예약 정보는 이 브라우저에만 저장됩니다.") + "</p></header>",
       '<div class="booking-layout"><form class="booking-form" id="bookingForm">',
       '<label class="form-field"><span>방문 일정</span><select id="bookingSchedule" name="schedule" required>' + options + "</select></label>",
-      '<div class="schedule-remaining" aria-live="polite"><span>선택 일정 신청 가능</span><strong id="selectedScheduleRemaining">' + formatCapacity(event, remaining) + '</strong></div>',
+      '<div class="schedule-remaining" aria-live="polite"><span>선택 일정 신청 가능</span><strong id="selectedScheduleRemaining">' + formatAvailability(event, remaining) + '</strong></div>',
       '<div class="guest-field"><span>' + (event.quantityLabel || (event.quantityUnit === "팀" ? "참가 팀" : "참여 인원")) + '<small id="bookingMaxGuide">한 번에 최대 ' + formatQuantity(event, maxQuantity) + '</small></span><div class="stepper">',
       '<button type="button" id="qtyMinus" aria-label="인원 줄이기">' + icon("minus") + '</button><output id="qtyOutput" aria-live="polite">1</output><button type="button" id="qtyPlus" aria-label="인원 늘리기">' + icon("plus") + "</button></div></div>",
       '<div class="form-grid"><label class="form-field"><span>예약자 이름</span><input name="name" autocomplete="name" maxlength="30" placeholder="이름을 입력해 주세요" required></label>',
@@ -504,7 +497,7 @@
     function updateScheduleAvailability() {
       var scheduleRemaining = getRemaining(event, byId("bookingSchedule").value);
       maxQuantity = Math.max(1, Math.min(Number(event.maxPerBooking || 5), scheduleRemaining));
-      byId("selectedScheduleRemaining").textContent = formatCapacity(event, scheduleRemaining);
+      byId("selectedScheduleRemaining").textContent = formatAvailability(event, scheduleRemaining);
       byId("bookingMaxGuide").textContent = "한 번에 최대 " + formatQuantity(event, maxQuantity);
       byId("confirmBooking").disabled = scheduleRemaining === 0;
       updateQuantity(Math.min(bookingQty, maxQuantity));
@@ -518,7 +511,7 @@
       var formData = new FormData(formEvent.currentTarget);
       var scheduleValue = String(formData.get("schedule"));
       var schedule = event.schedules.find(function (item) { return item.value === scheduleValue; }) || event.schedules[0];
-      if (event.seats - getReservedCount(event.id, schedule.value) < bookingQty) {
+      if (!event.unlimited && event.seats - getReservedCount(event.id, schedule.value) < bookingQty) {
         showToast("남은 자리가 변경됐어요. 인원을 다시 확인해 주세요.");
         renderBookingStep(event);
         return;
@@ -554,7 +547,7 @@
       '<h2 id="dialogTitle">' + (event.registrationOnly ? "참가 신청 완료!" : "바다 갈 준비 완료!") + '</h2><p>' + (event.registrationOnly ? "자유롭게 방문해 공연을 즐겨주세요. 아래 신청 번호로 참여 인원을 확인할 수 있어요." : "예약이 확정됐어요. 행사 당일 아래 예약 번호를 보여주세요.") + '<br>참여 완료 후 ' + formatPoints(event.reward) + " SEA 포인트가 지급됩니다.</p>",
       '<div class="booking-code"><span>예약 번호</span><strong>' + escapeHtml(booking.id) + "</strong></div>",
       paymentMessage,
-      '<p class="success-remaining">선택한 일정은 이제 <strong>' + formatCapacity(event, remaining) + '</strong> 남았어요.</p>',
+      '<p class="success-remaining">' + (event.unlimited ? '인원 제한 없이 참가 신청이 완료됐어요.' : '선택한 일정은 이제 <strong>' + formatCapacity(event, remaining) + '</strong> 남았어요.') + '</p>',
       '<div class="success-actions"><button class="button button-dark" type="button" id="goToBookings">내 예약 보기</button><button class="button button-outline" type="button" id="closeSuccess">계속 둘러보기</button></div>',
       "</div></section>"
     ].join("");
