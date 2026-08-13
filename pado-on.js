@@ -563,7 +563,9 @@
 
   function renderBookings() {
     var upcomingBookings = bookings.filter(function (booking) { return booking.status === "reserved"; });
-    var completedBookings = bookings.filter(function (booking) { return booking.status === "completed"; });
+    var completedBookings = bookings.filter(function (booking) {
+      return booking.status === "completed" && booking.eventId === "gwangalli-yoga";
+    });
     var activeCount = upcomingBookings.length + completedBookings.length;
     byId("bookingCount").textContent = activeCount + "건";
     byId("upcomingBookingCount").textContent = upcomingBookings.length + "건";
