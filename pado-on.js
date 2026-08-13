@@ -4,6 +4,7 @@
   var STORAGE_BOOKINGS = "oronaminSea.bookings.v2";
   var STORAGE_WALLET = "oronaminSea.wallet.v2";
   var STORAGE_STORIES = "oronaminSea.stories.v1";
+  var BUSKING_REWARD_FIX = "oronaminSea.fix.springBuskingReward.v1";
   var LEGACY_BOOKINGS = "padoOn.bookings.v1";
   var LEGACY_WALLET = "padoOn.wallet.v1";
   var selectedEventId = null;
@@ -870,8 +871,21 @@
 
   function init() {
     if (!Array.isArray(bookings)) bookings = [copy(defaultBooking)];
+    if (localStorage.getItem(BUSKING_REWARD_FIX) !== "done") {
+      var invalidBookingIds = bookings.filter(function (booking) {
+        return booking.eventId === "dadaepo-spring-busking";
+      }).map(function (booking) { return booking.id; });
+      if (!Array.isArray(wallet.history)) wallet.history = [];
+      var invalidRewards = wallet.history.filter(function (item) {
+        return invalidBookingIds.indexOf(item.bookingId) !== -1 || String(item.title || "").indexOf("다대포 봄맞이 바다 버스킹") !== -1;
+      });
+      var invalidPoints = invalidRewards.reduce(function (sum, item) { return sum + Number(item.points || 0); }, 0);
+      wallet.history = wallet.history.filter(function (item) { return invalidRewards.indexOf(item) === -1; });
+      wallet.points = Math.max(0, wallet.points - invalidPoints);
+      localStorage.setItem(BUSKING_REWARD_FIX, "done");
+    }
     bookings = bookings.filter(function (booking) {
-      return !(booking.eventId === "dadaepo-spring-busking" && booking.status === "completed");
+      return booking.eventId !== "dadaepo-spring-busking" || booking.status !== "completed";
     });
     if (!wallet || typeof wallet.points !== "number") wallet = copy(defaultWallet);
     if (!Array.isArray(userStories)) userStories = [];
