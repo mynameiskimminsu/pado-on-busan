@@ -115,14 +115,14 @@
     },
     {
       id: "songjeong-autumn-surf", title: "송정 가을 파도 서핑 체험", season: "autumn", location: "송정",
-      venue: "송정해수욕장 서핑존", category: "액티비티", dateNumber: "09.19", dateDay: "SAT", time: "09:30", duration: "120분", seats: 8, reward: 900, price: 55000,
+      venue: "송정해수욕장 서핑존", category: "액티비티", dateNumber: "09.19", dateDay: "SAT", time: "14:00", duration: "120분", seats: 8, reward: 900, price: 55000,
       image: "assets/songjeong-surf.png", imageAlt: "선선한 가을의 송정 바다에서 서핑을 배우는 입문자들", themes: ["activity"],
       tags: ["입문자 가능", "보드·슈트 제공", "안전 교육"],
       schedules: [
-        { value: "2026-09-19T09:30", label: "2026년 9월 19일 (토) 09:30" },
-        { value: "2026-10-03T09:30", label: "2026년 10월 3일 (토) 09:30" }
+        { value: "2026-09-19T14:00", label: "2026년 9월 19일 (토) 14:00" },
+        { value: "2026-10-03T14:00", label: "2026년 10월 3일 (토) 14:00" }
       ],
-      description: "선선한 바람과 잔잔한 파도를 만나는 가을 입문 서핑입니다. 안전 교육부터 패들링과 테이크오프까지 차근차근 배워요.",
+      description: "선선한 바람과 잔잔한 파도를 만나는 가을 입문 서핑입니다. 안전 교육부터 패들링과 테이크오프까지 차근차근 배워요. 소요 시간에는 중간 휴식시간 10분이 포함되어 있습니다.",
       includes: ["서핑보드·슈트", "전문 강사", "안전 교육"]
     },
     {
@@ -136,22 +136,22 @@
     },
     {
       id: "gijang-crab-boat", title: "기장 꽃게잡이 & 선상 꽃게라면", season: "autumn", location: "기장",
-      venue: "대변항 체험어선 승선장", category: "바다생태", dateNumber: "10.24", dateDay: "SAT", time: "10:00", duration: "4시간", seats: 12, reward: 800, price: 65000,
-      image: "assets/spring-clam-game.png", imageAlt: "부산 바다에서 꽃게를 잡고 선상 체험을 즐기는 가족 여행자", themes: ["ecology"],
+      venue: "대변항 체험어선 승선장", category: "바다생태", dateNumber: "10.24", dateDay: "SAT", time: "02:30", duration: "4시간", seats: 4, reward: 800, price: 65000,
+      image: "assets/gijang-crab-fishing.webp", imageAlt: "새벽 기장 앞바다의 조업 어선에서 안전 장비를 착용하고 꽃게 통발을 올리는 네 사람", themes: ["ecology"],
       tags: ["꽃게잡이", "선상 꽃게라면", "구명조끼 제공"],
       schedules: [
-        { value: "2026-10-24T10:00", label: "2026년 10월 24일 (토) 10:00" },
-        { value: "2026-10-31T10:00", label: "2026년 10월 31일 (토) 10:00" }
+        { value: "2026-10-24T02:30", label: "2026년 10월 24일 (토) 02:30" },
+        { value: "2026-10-31T02:30", label: "2026년 10월 31일 (토) 02:30" }
       ],
-      description: "기장 앞바다로 나가 통발을 올리며 꽃게잡이를 체험하고, 직접 잡은 꽃게를 넣어 끓인 따뜻한 라면을 배 위에서 맛보는 가을 선상 프로그램입니다.",
+      description: "기장 앞바다로 나가 통발을 올리며 꽃게잡이를 체험하고, 직접 잡은 꽃게를 넣어 끓인 따뜻한 라면을 배 위에서 맛보는 가을 선상 프로그램입니다. 해당 체험은 실제 조업을 나가는 것이므로 새벽에 진행됩니다.",
       includes: ["체험어선 승선", "꽃게잡이 장비", "선상 꽃게라면 1인 1그릇", "구명조끼·안전요원"]
     },
     {
       id: "gwangalli-fireworks", title: "광안리 바다 불꽃축제", season: "autumn", location: "광안리",
-      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "11.07", dateDay: "SAT", time: "18:00", duration: "180분", seats: 200, unlimited: true, infoOnly: true, reward: 0,
+      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "11.07", dateDay: "SAT", time: "20:00", duration: "70분", seats: 200, unlimited: true, infoOnly: true, reward: 0,
       image: "assets/gwangalli-fireworks.webp", imageAlt: "광안대교 위 밤하늘을 화려하게 수놓은 광안리 불꽃축제", themes: ["culture"],
       tags: ["예약 없이 관람", "인원 제한 없음", "돗자리·음식 지참 가능"],
-      schedules: [{ value: "2026-11-07T18:00", label: "2026년 11월 7일 (토) 18:00" }],
+      schedules: [{ value: "2026-11-07T20:00", label: "2026년 11월 7일 (토) 20:00" }],
       description: "별도 예약이나 참가 신청 없이 광안리 바다 위를 수놓는 불꽃을 자유롭게 감상하는 무료 행사입니다. 개인 돗자리와 음식은 가져올 수 있으며, 현장에서 돗자리와 음식은 제공하지 않습니다.",
       includes: ["관람 구역 안내", "안전요원 배치", "돗자리·음식 제공 없음"]
     },
