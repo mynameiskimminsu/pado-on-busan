@@ -87,18 +87,6 @@
       includes: ["전문 생태 해설", "관찰 노트", "가족 미션 카드"]
     },
     {
-      id: "yeongdo-seaglass", title: "영도 바다유리 업사이클링", season: "spring", location: "영도",
-      venue: "영도 해양문화공간 파도실", category: "사진·문화", dateNumber: "04.10", dateDay: "SAT", time: "14:00", duration: "100분", seats: 12, reward: 500,
-      image: "gwangalli-clean-sea.png", imageAlt: "깨끗한 부산 해변과 업사이클링 활동을 표현한 일러스트", themes: ["culture"],
-      tags: ["실내 진행", "우천 가능", "결과물 제공"],
-      schedules: [
-        { value: "2027-04-10T14:00", label: "2027년 4월 10일 (토) 14:00" },
-        { value: "2027-04-17T14:00", label: "2027년 4월 17일 (토) 14:00" }
-      ],
-      description: "파도에 닳아 둥글어진 바다유리의 이야기를 듣고, 나만의 부산 바다 모빌을 만드는 따뜻한 실내 체험입니다.",
-      includes: ["모든 공예 재료", "전문 작가 지도", "완성품 포장"]
-    },
-    {
       id: "cheongsapo-tea", title: "청사포 일출 차담", season: "winter", location: "청사포",
       venue: "청사포 다릿돌전망대 입구", category: "휴양", dateNumber: "12.19", dateDay: "SAT", time: "07:00", duration: "80분", seats: 10, reward: 500, price: 22000,
       image: "assets/pado-on-hero.png", imageAlt: "푸른 시간대의 고요한 부산 바다와 빛나는 다리", themes: ["relax"],
@@ -111,20 +99,8 @@
       includes: ["로컬 티 2종", "핫팩 제공", "일출 포토 가이드"]
     },
     {
-      id: "oryukdo-photo", title: "오륙도 바다 사진 산책", season: "spring", location: "오륙도",
-      venue: "오륙도 스카이워크 안내소", category: "사진·문화", dateNumber: "04.17", dateDay: "SAT", time: "10:30", duration: "110분", seats: 14, reward: 400,
-      image: "gwangalli-clean-sea.png", imageAlt: "맑은 하늘과 부산 바다를 배경으로 한 광안대교 일러스트", themes: ["culture"],
-      tags: ["휴대폰 가능", "초보자 추천", "봄 산책"],
-      schedules: [
-        { value: "2027-04-17T10:30", label: "2027년 4월 17일 (토) 10:30" },
-        { value: "2027-04-24T10:30", label: "2027년 4월 24일 (토) 10:30" }
-      ],
-      description: "오륙도에서 이기대 해안길까지 봄빛을 따라 걸으며, 휴대폰만으로 바다의 색과 여행의 순간을 담는 법을 배웁니다.",
-      includes: ["사진 미션 카드", "촬영 구도 코칭", "단체 기념 사진"]
-    },
-    {
       id: "dadaepo-clam-games", title: "다대포 바지락 캐기 & 갯벌 게임", season: "spring", location: "다대포",
-      venue: "다대포해수욕장 갯벌 체험존", category: "바다생태", dateNumber: "04.24", dateDay: "SAT", time: "10:00", duration: "120분", seats: 20, reward: 700, price: 35000,
+      venue: "다대포해수욕장 갯벌 체험존", category: "바다생태", dateNumber: "04.24", dateDay: "SAT", time: "10:00", duration: "120분", seats: 40, reward: 700, price: 35000,
       image: "assets/spring-clam-game.png", imageAlt: "다대포 갯벌에서 바지락을 캐고 게임을 즐기는 가족과 여행자", themes: ["ecology"],
       tags: ["바지락 캐기", "팀 갯벌 게임", "장화·도구 제공"],
       schedules: [
@@ -199,8 +175,8 @@
     },
     {
       id: "dadaepo-spring-busking", title: "다대포 봄맞이 바다 버스킹", season: "spring", location: "다대포",
-      venue: "다대포해수욕장 해변공원", category: "사진·문화", dateNumber: "04.03", dateDay: "SAT", time: "16:00", duration: "120분", seats: 120, reward: 200, registrationOnly: true,
-      image: "assets/dadaepo-sunset.png", imageAlt: "봄날 다대포 바다에서 자유롭게 음악 공연을 즐기는 시민들", themes: ["culture"],
+      venue: "다대포해수욕장 해변공원", category: "사진·문화", dateNumber: "04.03", dateDay: "SAT", time: "16:00", duration: "120분", seats: 20, reward: 200, registrationOnly: true, capacityUnit: "팀", quantityUnit: "팀",
+      image: "assets/spring-busking.webp", imageAlt: "봄날 다대포 바다 앞 무대에서 공연하는 버스킹 팀과 관객들", themes: ["culture"],
       tags: ["무료 참가", "자유 관람", "참가 신청"],
       schedules: [{ value: "2027-04-03T16:00", label: "2027년 4월 3일 (토) 16:00" }],
       description: "봄바다를 배경으로 지역 뮤지션의 공연을 자유롭게 즐기는 무료 버스킹입니다. 누구나 현장에서 관람할 수 있고, 예약은 좌석 지정이 아닌 참가 신청을 받기 위한 절차입니다.",
@@ -217,9 +193,9 @@
     },
     {
       id: "oryukdo-coastal-plants", title: "오륙도 해안 식물 관찰 및 해설", season: "spring", location: "오륙도",
-      venue: "오륙도 해맞이공원 안내소", category: "바다생태", dateNumber: "04.11", dateDay: "SUN", time: "10:00", duration: "100분", seats: 16, reward: 400, price: 18000,
-      image: "gwangalli-clean-sea.png", imageAlt: "봄의 부산 해안길에서 식물을 관찰하며 해설을 듣는 여행자", themes: ["ecology"],
-      tags: ["해안 식물 관찰", "전문 해설", "관찰 노트 제공"],
+      venue: "오륙도 해맞이공원 안내소", category: "바다생태", dateNumber: "04.11", dateDay: "SUN", time: "10:00", duration: "100분", seats: 16, reward: 400,
+      image: "assets/oryukdo-coastal-plants.webp", imageAlt: "오륙도 해안 절벽에 자라는 해국과 갯메꽃을 관찰하는 모습", themes: ["ecology"],
+      tags: ["무료 참가", "해안 식물 관찰", "전문 해설"],
       schedules: [
         { value: "2027-04-11T10:00", label: "2027년 4월 11일 (일) 10:00" },
         { value: "2027-04-18T10:00", label: "2027년 4월 18일 (일) 10:00" }
@@ -354,6 +330,8 @@
   function icon(name) { return '<svg class="icon" aria-hidden="true"><use href="#icon-' + name + '"></use></svg>'; }
   function formatPoints(points) { return new Intl.NumberFormat("ko-KR").format(points); }
   function getEvent(id) { return events.find(function (event) { return event.id === id; }); }
+  function formatCapacity(event, count) { return count + (event.capacityUnit || "자리"); }
+  function formatQuantity(event, count) { return count + (event.quantityUnit || "명"); }
 
   function getCalendarScheduleKey(event) {
     return event.schedules.reduce(function (earliest, schedule) {
@@ -413,7 +391,7 @@
       "<h3>" + escapeHtml(event.title) + "</h3>",
       '<div class="event-tags">' + event.tags.map(function (tag) { return "<span>" + escapeHtml(tag) + "</span>"; }).join("") + "</div>",
       '<div class="event-card-footer">',
-      '<div class="event-price"><strong>' + (price ? formatPoints(price) + "원" : "무료") + '</strong><small>' + (price ? "1인 기준 · " : "") + '+' + formatPoints(event.reward) + ' SEA P</small><span class="event-remaining">' + remaining + '자리 남음</span></div>',
+      '<div class="event-price"><strong>' + (price ? formatPoints(price) + "원" : "무료") + '</strong><small>' + (price ? "1인 기준 · " : "") + '+' + formatPoints(event.reward) + ' SEA P</small><span class="event-remaining">' + formatCapacity(event, remaining) + ' 남음</span></div>',
       '<button type="button" data-open-event="' + escapeHtml(event.id) + '"' + (!available ? ' class="sold-out"' : "") + ">" + (!available ? "마감" : "자세히 보기") + " " + icon("arrow") + "</button>",
       "</div></div></article>"
     ].join("");
@@ -463,7 +441,7 @@
       '<aside class="detail-summary">',
       '<div class="summary-row"><span>일정</span><strong>' + escapeHtml(event.schedules[0].label) + "</strong></div>",
       '<div class="summary-row"><span>소요 시간</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
-      '<div class="summary-row"><span>첫 일정 남은 자리</span><strong>' + remaining + "자리</strong></div>",
+      '<div class="summary-row"><span>첫 일정 신청 가능</span><strong>' + formatCapacity(event, remaining) + "</strong></div>",
       '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1인 " + formatPoints(price) + "원" : "무료") + "</strong></div>",
       '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
       '<button class="button button-dark" id="reserveFromDetail" type="button"' + (!available ? " disabled" : "") + ">" + (!available ? (event.registrationOnly ? "신청 마감" : "예약 마감") : event.registrationOnly ? "참가 신청하기" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
@@ -480,15 +458,15 @@
     var maxQuantity = Math.max(1, Math.min(5, remaining));
     var options = event.schedules.map(function (schedule) {
       var scheduleRemaining = getRemaining(event, schedule.value);
-      return '<option value="' + escapeHtml(schedule.value) + '"' + (schedule.value === firstAvailableSchedule.value ? " selected" : "") + (scheduleRemaining === 0 ? " disabled" : "") + '>' + escapeHtml(schedule.label) + " · " + scheduleRemaining + "자리 남음</option>";
+      return '<option value="' + escapeHtml(schedule.value) + '"' + (schedule.value === firstAvailableSchedule.value ? " selected" : "") + (scheduleRemaining === 0 ? " disabled" : "") + '>' + escapeHtml(schedule.label) + " · " + formatCapacity(event, scheduleRemaining) + " 남음</option>";
     }).join("");
     byId("dialogBody").innerHTML = [
       '<section class="booking-step"><header class="step-header"><span>RESERVATION · STEP 2 OF 2</span>',
       '<h2 id="dialogTitle">' + (event.registrationOnly ? "버스킹 참가를 신청해 주세요" : "방문할 날짜를 골라주세요") + '</h2><p>' + (event.registrationOnly ? "참석은 자유롭고, 신청 정보는 예상 참여 인원 확인에 사용됩니다." : "입력한 예약 정보는 이 브라우저에만 저장됩니다.") + "</p></header>",
       '<div class="booking-layout"><form class="booking-form" id="bookingForm">',
       '<label class="form-field"><span>방문 일정</span><select id="bookingSchedule" name="schedule" required>' + options + "</select></label>",
-      '<div class="schedule-remaining" aria-live="polite"><span>선택 일정 남은 자리</span><strong id="selectedScheduleRemaining">' + remaining + '자리</strong></div>',
-      '<div class="guest-field"><span>참여 인원<small id="bookingMaxGuide">한 번에 최대 ' + maxQuantity + '명</small></span><div class="stepper">',
+      '<div class="schedule-remaining" aria-live="polite"><span>선택 일정 신청 가능</span><strong id="selectedScheduleRemaining">' + formatCapacity(event, remaining) + '</strong></div>',
+      '<div class="guest-field"><span>' + (event.quantityUnit === "팀" ? "참가 팀" : "참여 인원") + '<small id="bookingMaxGuide">한 번에 최대 ' + formatQuantity(event, maxQuantity) + '</small></span><div class="stepper">',
       '<button type="button" id="qtyMinus" aria-label="인원 줄이기">' + icon("minus") + '</button><output id="qtyOutput" aria-live="polite">1</output><button type="button" id="qtyPlus" aria-label="인원 늘리기">' + icon("plus") + "</button></div></div>",
       '<div class="form-grid"><label class="form-field"><span>예약자 이름</span><input name="name" autocomplete="name" maxlength="30" placeholder="이름을 입력해 주세요" required></label>',
       '<label class="form-field"><span>연락처 또는 이메일</span><input name="contact" autocomplete="email" maxlength="60" placeholder="example@email.com" required></label></div>',
@@ -512,8 +490,8 @@
     function updateScheduleAvailability() {
       var scheduleRemaining = getRemaining(event, byId("bookingSchedule").value);
       maxQuantity = Math.max(1, Math.min(5, scheduleRemaining));
-      byId("selectedScheduleRemaining").textContent = scheduleRemaining + "자리";
-      byId("bookingMaxGuide").textContent = "한 번에 최대 " + maxQuantity + "명";
+      byId("selectedScheduleRemaining").textContent = formatCapacity(event, scheduleRemaining);
+      byId("bookingMaxGuide").textContent = "한 번에 최대 " + formatQuantity(event, maxQuantity);
       byId("confirmBooking").disabled = scheduleRemaining === 0;
       updateQuantity(Math.min(bookingQty, maxQuantity));
     }
@@ -562,7 +540,7 @@
       '<h2 id="dialogTitle">' + (event.registrationOnly ? "참가 신청 완료!" : "바다 갈 준비 완료!") + '</h2><p>' + (event.registrationOnly ? "자유롭게 방문해 공연을 즐겨주세요. 아래 신청 번호로 참여 인원을 확인할 수 있어요." : "예약이 확정됐어요. 행사 당일 아래 예약 번호를 보여주세요.") + '<br>참여 완료 후 ' + formatPoints(event.reward) + " SEA 포인트가 지급됩니다.</p>",
       '<div class="booking-code"><span>예약 번호</span><strong>' + escapeHtml(booking.id) + "</strong></div>",
       paymentMessage,
-      '<p class="success-remaining">선택한 일정은 이제 <strong>' + remaining + '자리</strong> 남았어요.</p>',
+      '<p class="success-remaining">선택한 일정은 이제 <strong>' + formatCapacity(event, remaining) + '</strong> 남았어요.</p>',
       '<div class="success-actions"><button class="button button-dark" type="button" id="goToBookings">내 예약 보기</button><button class="button button-outline" type="button" id="closeSuccess">계속 둘러보기</button></div>',
       "</div></section>"
     ].join("");
@@ -608,7 +586,7 @@
       var event = getEvent(booking.eventId);
       if (!event) return "";
       var paymentText = Number(booking.totalPrice || 0) ? " · 결제 " + formatPoints(booking.totalPrice) + "원" : "";
-      return '<article class="booking-item"><img class="booking-thumb" src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.title) + '" loading="lazy" decoding="async"><div class="booking-info"><span>' + escapeHtml(booking.id) + "</span><h4>" + escapeHtml(event.title) + "</h4><p>" + escapeHtml(booking.scheduleLabel) + " · " + Number(booking.quantity || 1) + "명" + paymentText + '</p></div><div class="booking-actions">' + bookingActions(booking, event) + "</div></article>";
+      return '<article class="booking-item"><img class="booking-thumb" src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.title) + '" loading="lazy" decoding="async"><div class="booking-info"><span>' + escapeHtml(booking.id) + "</span><h4>" + escapeHtml(event.title) + "</h4><p>" + escapeHtml(booking.scheduleLabel) + " · " + formatQuantity(event, Number(booking.quantity || 1)) + paymentText + '</p></div><div class="booking-actions">' + bookingActions(booking, event) + "</div></article>";
     }
 
     byId("upcomingBookingList").innerHTML = upcomingBookings.length
