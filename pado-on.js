@@ -146,7 +146,7 @@
     },
     {
       id: "gwangalli-fireworks", title: "광안리 바다 불꽃축제", season: "autumn", location: "광안리",
-      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "11.07", dateDay: "SAT", time: "18:00", duration: "180분", seats: 200, unlimited: true, infoOnly: true, reward: 100,
+      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "11.07", dateDay: "SAT", time: "18:00", duration: "180분", seats: 200, unlimited: true, infoOnly: true, reward: 0,
       image: "assets/gwangalli-fireworks.webp", imageAlt: "광안대교 위 밤하늘을 화려하게 수놓은 광안리 불꽃축제", themes: ["culture"],
       tags: ["예약 없이 관람", "인원 제한 없음", "돗자리·음식 지참 가능"],
       schedules: [{ value: "2026-11-07T18:00", label: "2026년 11월 7일 (토) 18:00" }],
@@ -155,7 +155,7 @@
     },
     {
       id: "gwangalli-winter-drone", title: "광안리 겨울 바다 드론쇼", season: "winter", location: "광안리",
-      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "12.12", dateDay: "SAT", time: "19:00", duration: "60분", seats: 200, unlimited: true, infoOnly: true, reward: 100,
+      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "12.12", dateDay: "SAT", time: "19:00", duration: "60분", seats: 200, unlimited: true, infoOnly: true, reward: 0,
       image: "assets/gwangalli-winter-drone.webp", imageAlt: "겨울 광안리 밤바다와 광안대교 위로 고래와 파도 모양이 펼쳐지는 드론쇼", themes: ["culture"],
       tags: ["예약 없이 관람", "인원 제한 없음", "돗자리·음식 지참 가능"],
       schedules: [{ value: "2026-12-12T19:00", label: "2026년 12월 12일 (토) 19:00" }],
@@ -310,6 +310,7 @@
   function formatCapacity(event, count) { return count + (event.capacityUnit || "자리"); }
   function formatQuantity(event, count) { return count + (event.quantityUnit || "명"); }
   function getPriceUnit(event) { return event.priceUnit || "인"; }
+  function formatReward(event) { return event.reward > 0 ? "+" + formatPoints(event.reward) + " SEA P" : "포인트 지급 없음"; }
   function formatAvailability(event, count) {
     if (event.unlimited) return "인원 제한 없음";
     return formatCapacity(event, count) + (event.registrationOnly ? " 신청 가능" : " 남음");
@@ -374,7 +375,7 @@
       "<h3>" + escapeHtml(event.title) + "</h3>",
       '<div class="event-tags">' + event.tags.map(function (tag) { return "<span>" + escapeHtml(tag) + "</span>"; }).join("") + "</div>",
       '<div class="event-card-footer">',
-      '<div class="event-price"><strong>' + (price ? formatPoints(price) + "원" : "무료") + '</strong><small>' + (price ? "1" + getPriceUnit(event) + " 기준 · " : "") + '+' + formatPoints(event.reward) + ' SEA P</small><span class="event-remaining">' + formatAvailability(event, remaining) + '</span></div>',
+      '<div class="event-price"><strong>' + (price ? formatPoints(price) + "원" : "무료") + '</strong><small>' + (price ? "1" + getPriceUnit(event) + " 기준 · " : "") + formatReward(event) + '</small><span class="event-remaining">' + formatAvailability(event, remaining) + '</span></div>',
       '<button type="button" data-open-event="' + escapeHtml(event.id) + '"' + (!available ? ' class="sold-out"' : "") + ">" + (!available ? "마감" : "자세히 보기") + " " + icon("arrow") + "</button>",
       "</div></div></article>"
     ].join("");
@@ -426,7 +427,7 @@
       '<div class="summary-row"><span>소요 시간</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
       '<div class="summary-row"><span>' + (event.infoOnly ? "관람 안내" : "첫 일정 신청 가능") + '</span><strong>' + (event.infoOnly ? "예약 없이 자유 관람" : formatAvailability(event, remaining)) + "</strong></div>",
       '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1" + getPriceUnit(event) + " " + formatPoints(price) + "원" : "무료") + "</strong></div>",
-      '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
+      '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>' + formatReward(event) + "</strong></div>",
       event.infoOnly
         ? '<div class="prototype-note">안내 전용 이벤트입니다. 별도 예약 없이 행사 당일 자유롭게 관람해 주세요.</div>'
         : '<button class="button button-dark" id="reserveFromDetail" type="button"' + (!available ? " disabled" : "") + ">" + (!available ? (event.registrationOnly ? "신청 마감" : "예약 마감") : event.registrationOnly ? "참가 신청하기" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
