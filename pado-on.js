@@ -61,11 +61,27 @@
     }
   };
 
+  function createDailySchedules(startDate, endDate, time) {
+    var schedules = [];
+    var current = new Date(startDate + "T00:00:00+09:00");
+    var last = new Date(endDate + "T00:00:00+09:00");
+    var dayNames = ["일", "월", "화", "수", "목", "금", "토"];
+    while (current <= last) {
+      var year = current.getFullYear();
+      var month = String(current.getMonth() + 1).padStart(2, "0");
+      var day = String(current.getDate()).padStart(2, "0");
+      var dateValue = year + "-" + month + "-" + day;
+      schedules.push({ value: dateValue + "T" + time, label: year + "년 " + Number(month) + "월 " + Number(day) + "일 (" + dayNames[current.getDay()] + ") " + time });
+      current.setDate(current.getDate() + 1);
+    }
+    return schedules;
+  }
+
   var events = [
     {
       id: "gwangalli-yoga", title: "광안리 선셋 비치요가", season: "summer", location: "광안리",
-      venue: "광안리 해변 만남의 광장", category: "휴양", dateNumber: "08.15", dateDay: "SAT", time: "18:30", duration: "70분", seats: 8, reward: 500, price: 25000,
-      image: "assets/pado-on-hero.png", imageAlt: "광안대교가 빛나는 광안리 바다의 저녁 풍경", themes: ["relax"],
+      venue: "광안리 해변 만남의 광장", category: "휴양", dateNumber: "08.15", dateDay: "SAT", time: "18:30", duration: "70분", seats: 8, reward: 500, price: 3500,
+      image: "assets/gwangalli-sunset-yoga.webp", imageAlt: "광안대교와 노을을 바라보며 광안리 해변에서 요가하는 참가자들", themes: ["relax"],
       tags: ["초보자 환영", "매트 제공", "선셋"],
       schedules: [
         { value: "2026-08-15T18:30", label: "2026년 8월 15일 (토) 18:30" },
@@ -112,15 +128,12 @@
     },
     {
       id: "haeundae-parasol", title: "해운대 파라솔 자리 대여", season: "summer", location: "해운대",
-      venue: "해운대해수욕장 이벤트존", category: "휴양", dateNumber: "08.16", dateDay: "SUN", time: "10:00", duration: "120분", seats: 24, reward: 300, price: 20000,
+      venue: "해운대해수욕장 이벤트존", category: "휴양", dateNumber: "07.01", dateDay: "THU", time: "10:00", duration: "5시간", seats: 24, reward: 300, price: 20000, capacityUnit: "개", quantityUnit: "개", quantityLabel: "파라솔 수", priceUnit: "파라솔",
       image: "assets/summer-parasol.png", imageAlt: "해운대 바다의 지정 파라솔 아래에서 쉬는 여행자들", themes: ["relax"],
-      tags: ["파라솔 지정석", "2시간 이용", "사전 예약"],
-      schedules: [
-        { value: "2026-08-16T10:00", label: "2026년 8월 16일 (일) 10:00" },
-        { value: "2026-08-23T10:00", label: "2026년 8월 23일 (일) 10:00" }
-      ],
-      description: "해운대 바다를 여유롭게 즐길 수 있도록 파라솔 지정석을 사전 예약하는 휴양 프로그램입니다. 예약한 시간 동안 파라솔과 비치 매트를 이용할 수 있어요.",
-      includes: ["파라솔 지정석", "비치 매트", "2시간 이용 안내"]
+      tags: ["파라솔 수로 예약", "5시간 이용", "매일 운영"],
+      schedules: createDailySchedules("2027-07-01", "2027-08-31", "10:00"),
+      description: "7월 1일부터 8월 31일까지 매일 운영되는 해운대 파라솔 대여입니다. 인원이 아닌 필요한 파라솔 수를 선택해 예약하고 5시간 동안 이용할 수 있어요.",
+      includes: ["파라솔 지정석", "비치 매트", "5시간 이용 안내"]
     },
     {
       id: "songjeong-autumn-surf", title: "송정 가을 파도 서핑 체험", season: "autumn", location: "송정",
@@ -205,12 +218,12 @@
     },
     {
       id: "dadaepo-beach-sketch", title: "다대포 해변 풍경 스케치 대회", season: "summer", location: "다대포",
-      venue: "다대포해수욕장 해변공원", category: "사진·문화", dateNumber: "07.17", dateDay: "SAT", time: "15:00", duration: "150분", seats: 80, reward: 300,
-      image: "assets/dadaepo-sunset.png", imageAlt: "여름 다대포 해변 풍경을 바라보며 그림을 그리는 참가자", themes: ["culture"],
-      tags: ["무료 참가", "개인 화구 지참", "현장 작품 제출"],
+      venue: "다대포해수욕장 해변공원", category: "사진·문화", dateNumber: "07.17", dateDay: "SAT", time: "15:00", duration: "4시간", seats: 100, reward: 300, capacityUnit: "팀", quantityUnit: "팀", quantityLabel: "참가 팀", maxPerBooking: 1,
+      image: "assets/dadaepo-sketch-contest.webp", imageAlt: "다대포 해변에서 바다 풍경을 스케치하는 대회 참가자들", themes: ["culture"],
+      tags: ["무료 참가", "100팀 모집", "우승자 추가 포인트"],
       schedules: [{ value: "2027-07-17T15:00", label: "2027년 7월 17일 (토) 15:00" }],
-      description: "여름 다대포의 바다와 노을을 자유롭게 그려 현장에서 작품을 제출하는 무료 스케치 대회입니다. 종이와 채색 도구 등 개인 화구를 준비해 주세요.",
-      includes: ["참가 번호표", "작품 제출 안내", "개인 화구 제공 없음"]
+      description: "여름 다대포의 바다와 노을을 4시간 동안 자유롭게 그려 현장에서 작품을 제출하는 무료 스케치 대회입니다. 우승자에게는 추가 SEA 포인트가 지급될 예정이며, 종이와 채색 도구 등 개인 화구를 준비해 주세요.",
+      includes: ["참가 번호표", "우승자 추가 포인트 지급 예정", "작품 제출 안내", "개인 화구 제공 없음"]
     },
     {
       id: "haeundae-coastal-bike", title: "해운대 가을 해변 자전거 타기", season: "autumn", location: "해운대",
@@ -332,6 +345,7 @@
   function getEvent(id) { return events.find(function (event) { return event.id === id; }); }
   function formatCapacity(event, count) { return count + (event.capacityUnit || "자리"); }
   function formatQuantity(event, count) { return count + (event.quantityUnit || "명"); }
+  function getPriceUnit(event) { return event.priceUnit || "인"; }
 
   function getCalendarScheduleKey(event) {
     return event.schedules.reduce(function (earliest, schedule) {
@@ -391,7 +405,7 @@
       "<h3>" + escapeHtml(event.title) + "</h3>",
       '<div class="event-tags">' + event.tags.map(function (tag) { return "<span>" + escapeHtml(tag) + "</span>"; }).join("") + "</div>",
       '<div class="event-card-footer">',
-      '<div class="event-price"><strong>' + (price ? formatPoints(price) + "원" : "무료") + '</strong><small>' + (price ? "1인 기준 · " : "") + '+' + formatPoints(event.reward) + ' SEA P</small><span class="event-remaining">' + formatCapacity(event, remaining) + ' 남음</span></div>',
+      '<div class="event-price"><strong>' + (price ? formatPoints(price) + "원" : "무료") + '</strong><small>' + (price ? "1" + getPriceUnit(event) + " 기준 · " : "") + '+' + formatPoints(event.reward) + ' SEA P</small><span class="event-remaining">' + formatCapacity(event, remaining) + ' 남음</span></div>',
       '<button type="button" data-open-event="' + escapeHtml(event.id) + '"' + (!available ? ' class="sold-out"' : "") + ">" + (!available ? "마감" : "자세히 보기") + " " + icon("arrow") + "</button>",
       "</div></div></article>"
     ].join("");
@@ -442,7 +456,7 @@
       '<div class="summary-row"><span>일정</span><strong>' + escapeHtml(event.schedules[0].label) + "</strong></div>",
       '<div class="summary-row"><span>소요 시간</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
       '<div class="summary-row"><span>첫 일정 신청 가능</span><strong>' + formatCapacity(event, remaining) + "</strong></div>",
-      '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1인 " + formatPoints(price) + "원" : "무료") + "</strong></div>",
+      '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1" + getPriceUnit(event) + " " + formatPoints(price) + "원" : "무료") + "</strong></div>",
       '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
       '<button class="button button-dark" id="reserveFromDetail" type="button"' + (!available ? " disabled" : "") + ">" + (!available ? (event.registrationOnly ? "신청 마감" : "예약 마감") : event.registrationOnly ? "참가 신청하기" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
       "</aside></div></div></section>"
@@ -466,13 +480,13 @@
       '<div class="booking-layout"><form class="booking-form" id="bookingForm">',
       '<label class="form-field"><span>방문 일정</span><select id="bookingSchedule" name="schedule" required>' + options + "</select></label>",
       '<div class="schedule-remaining" aria-live="polite"><span>선택 일정 신청 가능</span><strong id="selectedScheduleRemaining">' + formatCapacity(event, remaining) + '</strong></div>',
-      '<div class="guest-field"><span>' + (event.quantityUnit === "팀" ? "참가 팀" : "참여 인원") + '<small id="bookingMaxGuide">한 번에 최대 ' + formatQuantity(event, maxQuantity) + '</small></span><div class="stepper">',
+      '<div class="guest-field"><span>' + (event.quantityLabel || (event.quantityUnit === "팀" ? "참가 팀" : "참여 인원")) + '<small id="bookingMaxGuide">한 번에 최대 ' + formatQuantity(event, maxQuantity) + '</small></span><div class="stepper">',
       '<button type="button" id="qtyMinus" aria-label="인원 줄이기">' + icon("minus") + '</button><output id="qtyOutput" aria-live="polite">1</output><button type="button" id="qtyPlus" aria-label="인원 늘리기">' + icon("plus") + "</button></div></div>",
       '<div class="form-grid"><label class="form-field"><span>예약자 이름</span><input name="name" autocomplete="name" maxlength="30" placeholder="이름을 입력해 주세요" required></label>',
       '<label class="form-field"><span>연락처 또는 이메일</span><input name="contact" autocomplete="email" maxlength="60" placeholder="example@email.com" required></label></div>',
       '<button class="back-link" id="backToDetail" type="button">← 행사 정보로 돌아가기</button></form>',
       '<aside class="booking-summary-card"><div class="summary-event"><img src="' + escapeHtml(event.image) + '" alt="' + escapeHtml(event.imageAlt) + '" decoding="async"><div><h3>' + escapeHtml(event.title) + "</h3><p>" + escapeHtml(event.location + " · " + event.time) + "</p></div></div>",
-      '<div class="price-row"><span>1인 이용 요금</span><strong>' + (unitPrice ? formatPoints(unitPrice) + "원" : "무료") + "</strong></div>",
+      '<div class="price-row"><span>1' + getPriceUnit(event) + ' 이용 요금</span><strong>' + (unitPrice ? formatPoints(unitPrice) + "원" : "무료") + "</strong></div>",
       '<div class="price-row total payment-total"><span>총 결제 금액</span><strong id="bookingTotal">' + formatPoints(unitPrice) + "원</strong></div>",
       '<div class="price-row total"><span>적립 예정</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
       '<p class="prototype-note reward-note">예약 1건 기준 · 참여 완료 후 적립</p>',
