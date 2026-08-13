@@ -128,7 +128,7 @@
     },
     {
       id: "haeundae-parasol", title: "해운대 파라솔 자리 대여", season: "summer", location: "해운대",
-      venue: "해운대해수욕장 이벤트존", category: "휴양", dateNumber: "07.01", dateDay: "THU", time: "10:00", duration: "5시간", seats: 24, reward: 300, price: 20000, capacityUnit: "개", quantityUnit: "개", quantityLabel: "파라솔 수", priceUnit: "파라솔",
+      venue: "해운대해수욕장 이벤트존", category: "휴양", dateNumber: "07.01", dateDay: "THU", time: "10:00", duration: "5시간", seats: 24, reward: 300, price: 20000, capacityUnit: "개", quantityUnit: "개", quantityLabel: "파라솔 수", priceUnit: "파라솔", maxPerBooking: 1,
       image: "assets/summer-parasol.png", imageAlt: "해운대 바다의 지정 파라솔 아래에서 쉬는 여행자들", themes: ["relax"],
       tags: ["파라솔 수로 예약", "5시간 이용", "매일 운영"],
       schedules: createDailySchedules("2027-07-01", "2027-08-31", "10:00"),
