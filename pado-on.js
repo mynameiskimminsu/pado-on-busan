@@ -442,7 +442,7 @@
     var unitPrice = Number(event.price || 0);
     var firstAvailableSchedule = event.schedules.find(function (schedule) { return getRemaining(event, schedule.value) > 0; }) || event.schedules[0];
     var remaining = getRemaining(event, firstAvailableSchedule.value);
-    var maxQuantity = Math.max(1, Math.min(Number(event.maxPerBooking || 5), remaining));
+    var maxQuantity = 1;
     var options = event.schedules.map(function (schedule) {
       var scheduleRemaining = getRemaining(event, schedule.value);
       return '<option value="' + escapeHtml(schedule.value) + '"' + (schedule.value === firstAvailableSchedule.value ? " selected" : "") + (scheduleRemaining === 0 ? " disabled" : "") + '>' + escapeHtml(schedule.label) + " · " + formatAvailability(event, scheduleRemaining) + "</option>";
@@ -476,7 +476,7 @@
     }
     function updateScheduleAvailability() {
       var scheduleRemaining = getRemaining(event, byId("bookingSchedule").value);
-      maxQuantity = Math.max(1, Math.min(Number(event.maxPerBooking || 5), scheduleRemaining));
+      maxQuantity = 1;
       byId("selectedScheduleRemaining").textContent = formatAvailability(event, scheduleRemaining);
       byId("bookingMaxGuide").textContent = "한 번에 최대 " + formatQuantity(event, maxQuantity);
       byId("confirmBooking").disabled = scheduleRemaining === 0;
@@ -491,6 +491,14 @@
       var formData = new FormData(formEvent.currentTarget);
       var scheduleValue = String(formData.get("schedule"));
       var schedule = event.schedules.find(function (item) { return item.value === scheduleValue; }) || event.schedules[0];
+      var contactValue = String(formData.get("contact")).trim().toLowerCase();
+      var duplicateBooking = bookings.some(function (booking) {
+        return booking.eventId === event.id && booking.status !== "cancelled" && String(booking.contact || "").trim().toLowerCase() === contactValue;
+      });
+      if (duplicateBooking) {
+        showToast("같은 연락처로는 이 이벤트를 한 번만 예약할 수 있어요.");
+        return;
+      }
       if (!event.unlimited && event.seats - getReservedCount(event.id, schedule.value) < bookingQty) {
         showToast("남은 자리가 변경됐어요. 인원을 다시 확인해 주세요.");
         renderBookingStep(event);
@@ -498,7 +506,7 @@
       }
       var booking = {
         id: createBookingCode(), eventId: event.id, schedule: schedule.value, scheduleLabel: schedule.label,
-        quantity: bookingQty, name: String(formData.get("name")).trim(), contact: String(formData.get("contact")).trim(),
+        quantity: 1, name: String(formData.get("name")).trim(), contact: contactValue,
         unitPrice: unitPrice, totalPrice: unitPrice * bookingQty, paymentStatus: unitPrice ? "paid-demo" : "free", registrationOnly: Boolean(event.registrationOnly),
         status: "reserved", rewarded: false, createdAt: new Date().toISOString()
       };
