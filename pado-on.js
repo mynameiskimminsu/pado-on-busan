@@ -45,7 +45,7 @@
       kicker: "RIDE & BREEZE",
       title: "선선한 바람을 타는<br><em>가을 파도</em>",
       description: "송정의 부드러운 가을 파도 위에서 첫 서핑에 도전해보세요.",
-      tags: ["가을 서핑", "노을 생태 산책", "안전 교육"],
+      tags: ["가을 서핑", "입문자 체험", "안전 교육"],
       image: "assets/songjeong-surf.png",
       alt: "송정 해변에서 가을 파도를 타는 입문 서퍼들",
       caption: "SONGJEONG · BUSAN"
