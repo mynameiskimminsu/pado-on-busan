@@ -205,10 +205,10 @@
     },
     {
       id: "cheongsapo-breakwater-fishing", title: "청사포 겨울 방파제 낚시", season: "winter", location: "청사포",
-      venue: "청사포항 안전 낚시 구역", category: "바다생태", dateNumber: "12.18", dateDay: "FRI", time: "13:00", duration: "180분", seats: 30, reward: 300,
+      venue: "청사포항 안전 낚시 구역", category: "바다생태", dateNumber: "12.19", dateDay: "SAT", time: "13:00", duration: "180분", seats: 30, reward: 300,
       image: "assets/cheongsapo-winter-fishing.webp", imageAlt: "겨울 아침 청사포 방파제의 안전 구역에서 낚시를 즐기는 참가자들", themes: ["ecology"],
       tags: ["무료 참가", "개인 장비 필수", "장비 제공 없음"],
-      schedules: [{ value: "2026-12-18T13:00", label: "2026년 12월 18일 (금) 13:00" }],
+      schedules: [{ value: "2026-12-19T13:00", label: "2026년 12월 19일 (토) 13:00" }],
       description: "겨울 청사포 방파제의 지정된 안전 구역에서 자유롭게 낚시를 즐기는 무료 행사입니다. 낚싯대, 미끼, 구명조끼 등 필요한 장비는 제공하지 않으므로 반드시 개인 장비를 준비해 주세요.",
       includes: ["안전 구역 안내", "현장 안전요원", "낚시 장비·미끼 제공 없음"]
     }
