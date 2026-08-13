@@ -127,11 +127,11 @@
     },
     {
       id: "cheongsapo-sunrise-contest", title: "청사포 이색 새해 일출사진 대회", season: "winter", location: "청사포",
-      venue: "청사포 다릿돌전망대 앞", category: "사진·문화", dateNumber: "01.01", dateDay: "FRI", time: "06:30", duration: "150분", seats: 40, unlimited: true, reward: 1000,
+      venue: "청사포 다릿돌전망대 앞", category: "사진·문화", dateNumber: "01.01", dateDay: "FRI", time: "07:32", duration: "150분", seats: 40, unlimited: true, reward: 1000,
       image: "assets/winter-sunrise-contest.png", imageAlt: "청사포의 새해 일출을 촬영하는 사진 대회 참가자들", themes: ["culture"],
       tags: ["누구나 참가", "휴대폰 참여 가능", "사진 1점 제출"],
-      schedules: [{ value: "2027-01-01T06:30", label: "2027년 1월 1일 (금) 06:30" }],
-      description: "나이와 촬영 경험에 관계없이 누구나 참가해 새해 첫 일출을 나만의 시선으로 담는 현장 대회입니다. 휴대폰과 카메라 모두 사용할 수 있으며 한 장의 사진을 제출하면 됩니다.",
+      schedules: [{ value: "2027-01-01T07:32", label: "2027년 1월 1일 (금) 07:32" }],
+      description: "나이와 촬영 경험에 관계없이 누구나 참가해 새해 첫 일출을 나만의 시선으로 담는 현장 대회입니다. 휴대폰과 카메라 모두 사용할 수 있으며 한 장의 사진을 제출하면 됩니다. 해당 시간은 일출 예정 시간이며, 사진은 당일 23:59까지 제출해 주세요.",
       includes: ["촬영 구역 안내", "작품 제출 가이드", "기념 포토 카드"]
     },
     {
@@ -157,11 +157,11 @@
     },
     {
       id: "gwangalli-winter-drone", title: "광안리 겨울 바다 드론쇼", season: "winter", location: "광안리",
-      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "12.12", dateDay: "SAT", time: "19:00", duration: "60분", seats: 200, unlimited: true, infoOnly: true, reward: 0,
+      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "12.26", dateDay: "SAT", time: "22:00", duration: "20분", seats: 200, unlimited: true, infoOnly: true, reward: 0,
       image: "assets/gwangalli-winter-drone.webp", imageAlt: "겨울 광안리 밤바다와 광안대교 위로 고래와 파도 모양이 펼쳐지는 드론쇼", themes: ["culture"],
       tags: ["예약 없이 관람", "인원 제한 없음", "돗자리·음식 지참 가능"],
-      schedules: [{ value: "2026-12-12T19:00", label: "2026년 12월 12일 (토) 19:00" }],
-      description: "별도 예약이나 참가 신청 없이 겨울 광안리 밤하늘에 펼쳐지는 드론 퍼포먼스를 자유롭게 관람하는 무료 행사입니다. 개인 돗자리와 음식은 가져올 수 있으며, 현장 제공 물품과 음식은 없습니다.",
+      schedules: [{ value: "2026-12-26T22:00", label: "2026년 12월 26일 (토) 22:00" }],
+      description: "별도 예약이나 참가 신청 없이 겨울 광안리 밤하늘에 펼쳐지는 드론 퍼포먼스를 자유롭게 관람하는 무료 행사입니다. 본 공연은 한 해를 마무리한다는 의미에서 매주 토요일에 선보이는 드론쇼와 달리 조금 더 길고 더 많은 볼거리를 제공할 예정입니다. 개인 돗자리와 음식은 가져올 수 있으며, 현장 제공 물품과 음식은 없습니다.",
       includes: ["관람 구역 안내", "안전요원 배치", "돗자리·음식 제공 없음"]
     },
     {
@@ -205,10 +205,10 @@
     },
     {
       id: "cheongsapo-breakwater-fishing", title: "청사포 겨울 방파제 낚시", season: "winter", location: "청사포",
-      venue: "청사포항 안전 낚시 구역", category: "바다생태", dateNumber: "01.23", dateDay: "SAT", time: "08:00", duration: "180분", seats: 30, reward: 300,
+      venue: "청사포항 안전 낚시 구역", category: "바다생태", dateNumber: "12.18", dateDay: "FRI", time: "13:00", duration: "180분", seats: 30, reward: 300,
       image: "assets/cheongsapo-winter-fishing.webp", imageAlt: "겨울 아침 청사포 방파제의 안전 구역에서 낚시를 즐기는 참가자들", themes: ["ecology"],
       tags: ["무료 참가", "개인 장비 필수", "장비 제공 없음"],
-      schedules: [{ value: "2027-01-23T08:00", label: "2027년 1월 23일 (토) 08:00" }],
+      schedules: [{ value: "2026-12-18T13:00", label: "2026년 12월 18일 (금) 13:00" }],
       description: "겨울 청사포 방파제의 지정된 안전 구역에서 자유롭게 낚시를 즐기는 무료 행사입니다. 낚싯대, 미끼, 구명조끼 등 필요한 장비는 제공하지 않으므로 반드시 개인 장비를 준비해 주세요.",
       includes: ["안전 구역 안내", "현장 안전요원", "낚시 장비·미끼 제공 없음"]
     }
