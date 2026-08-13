@@ -175,7 +175,7 @@
     },
     {
       id: "dadaepo-spring-busking", title: "다대포 봄맞이 바다 버스킹", season: "spring", location: "다대포",
-      venue: "다대포해수욕장 해변공원", category: "사진·문화", dateNumber: "04.03", dateDay: "SAT", time: "16:00", duration: "120분", seats: 20, reward: 200, registrationOnly: true, capacityUnit: "팀", quantityUnit: "팀",
+      venue: "다대포해수욕장 해변공원", category: "사진·문화", dateNumber: "04.03", dateDay: "SAT", time: "16:00", duration: "120분", seats: 20, reward: 200, registrationOnly: true, capacityUnit: "팀", quantityUnit: "팀", maxPerBooking: 1,
       image: "assets/spring-busking.webp", imageAlt: "봄날 다대포 바다 앞 무대에서 공연하는 버스킹 팀과 관객들", themes: ["culture"],
       tags: ["무료 참가", "자유 관람", "참가 신청"],
       schedules: [{ value: "2027-04-03T16:00", label: "2027년 4월 3일 (토) 16:00" }],
@@ -455,7 +455,7 @@
     var unitPrice = Number(event.price || 0);
     var firstAvailableSchedule = event.schedules.find(function (schedule) { return getRemaining(event, schedule.value) > 0; }) || event.schedules[0];
     var remaining = getRemaining(event, firstAvailableSchedule.value);
-    var maxQuantity = Math.max(1, Math.min(5, remaining));
+    var maxQuantity = Math.max(1, Math.min(Number(event.maxPerBooking || 5), remaining));
     var options = event.schedules.map(function (schedule) {
       var scheduleRemaining = getRemaining(event, schedule.value);
       return '<option value="' + escapeHtml(schedule.value) + '"' + (schedule.value === firstAvailableSchedule.value ? " selected" : "") + (scheduleRemaining === 0 ? " disabled" : "") + '>' + escapeHtml(schedule.label) + " · " + formatCapacity(event, scheduleRemaining) + " 남음</option>";
@@ -489,7 +489,7 @@
     }
     function updateScheduleAvailability() {
       var scheduleRemaining = getRemaining(event, byId("bookingSchedule").value);
-      maxQuantity = Math.max(1, Math.min(5, scheduleRemaining));
+      maxQuantity = Math.max(1, Math.min(Number(event.maxPerBooking || 5), scheduleRemaining));
       byId("selectedScheduleRemaining").textContent = formatCapacity(event, scheduleRemaining);
       byId("bookingMaxGuide").textContent = "한 번에 최대 " + formatQuantity(event, maxQuantity);
       byId("confirmBooking").disabled = scheduleRemaining === 0;
