@@ -5,6 +5,7 @@
   var STORAGE_WALLET = "oronaminSea.wallet.v2";
   var STORAGE_STORIES = "oronaminSea.stories.v1";
   var BUSKING_REWARD_FIX = "oronaminSea.fix.springBuskingReward.v1";
+  var POINT_USAGE_FIX = "oronaminSea.fix.examplePointUsage.v1";
   var LEGACY_BOOKINGS = "padoOn.bookings.v1";
   var LEGACY_WALLET = "padoOn.wallet.v1";
   var selectedEventId = null;
@@ -867,6 +868,10 @@
 
   function init() {
     if (!Array.isArray(bookings)) bookings = [copy(defaultBooking)];
+    if (localStorage.getItem(POINT_USAGE_FIX) !== "done") {
+      wallet.points = Math.max(0, Number(wallet.points || 0) - 200);
+      localStorage.setItem(POINT_USAGE_FIX, "done");
+    }
     if (localStorage.getItem(BUSKING_REWARD_FIX) !== "done") {
       var invalidBookingIds = bookings.filter(function (booking) {
         return booking.eventId === "dadaepo-spring-busking";
