@@ -158,11 +158,11 @@
     },
     {
       id: "gwangalli-fireworks", title: "광안리 바다 불꽃축제", season: "autumn", location: "광안리",
-      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "11.07", dateDay: "SAT", time: "18:00", duration: "180분", seats: 200, unlimited: true, reward: 100,
+      venue: "광안리해수욕장 관람 구역", category: "사진·문화", dateNumber: "11.07", dateDay: "SAT", time: "18:00", duration: "180분", seats: 200, unlimited: true, infoOnly: true, reward: 100,
       image: "assets/gwangalli-fireworks.webp", imageAlt: "광안대교 위 밤하늘을 화려하게 수놓은 광안리 불꽃축제", themes: ["culture"],
-      tags: ["무료 참가", "인원 제한 없음", "돗자리·음식 지참 가능"],
+      tags: ["예약 없이 관람", "인원 제한 없음", "돗자리·음식 지참 가능"],
       schedules: [{ value: "2026-11-07T18:00", label: "2026년 11월 7일 (토) 18:00" }],
-      description: "광안리 바다 위를 수놓는 불꽃을 자유롭게 감상하는 무료 행사입니다. 개인 돗자리와 음식은 가져올 수 있으며, 현장에서 돗자리와 음식은 제공하지 않습니다.",
+      description: "별도 예약이나 참가 신청 없이 광안리 바다 위를 수놓는 불꽃을 자유롭게 감상하는 무료 행사입니다. 개인 돗자리와 음식은 가져올 수 있으며, 현장에서 돗자리와 음식은 제공하지 않습니다.",
       includes: ["관람 구역 안내", "안전요원 배치", "돗자리·음식 제공 없음"]
     },
     {
@@ -448,10 +448,12 @@
       '<aside class="detail-summary">',
       '<div class="summary-row"><span>일정</span><strong>' + escapeHtml(event.schedules[0].label) + "</strong></div>",
       '<div class="summary-row"><span>소요 시간</span><strong>' + escapeHtml(event.duration) + "</strong></div>",
-      '<div class="summary-row"><span>첫 일정 신청 가능</span><strong>' + formatAvailability(event, remaining) + "</strong></div>",
+      '<div class="summary-row"><span>' + (event.infoOnly ? "관람 안내" : "첫 일정 신청 가능") + '</span><strong>' + (event.infoOnly ? "예약 없이 자유 관람" : formatAvailability(event, remaining)) + "</strong></div>",
       '<div class="summary-row price-summary-row"><span>이용 요금</span><strong>' + (price ? "1" + getPriceUnit(event) + " " + formatPoints(price) + "원" : "무료") + "</strong></div>",
       '<div class="summary-row reward-row"><span>SEA 포인트</span><strong>+' + formatPoints(event.reward) + " SEA P</strong></div>",
-      '<button class="button button-dark" id="reserveFromDetail" type="button"' + (!available ? " disabled" : "") + ">" + (!available ? (event.registrationOnly ? "신청 마감" : "예약 마감") : event.registrationOnly ? "참가 신청하기" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
+      event.infoOnly
+        ? '<div class="prototype-note">안내 전용 이벤트입니다. 별도 예약 없이 행사 당일 자유롭게 관람해 주세요.</div>'
+        : '<button class="button button-dark" id="reserveFromDetail" type="button"' + (!available ? " disabled" : "") + ">" + (!available ? (event.registrationOnly ? "신청 마감" : "예약 마감") : event.registrationOnly ? "참가 신청하기" : "날짜와 인원 선택") + " " + icon("arrow") + "</button>",
       "</aside></div></div></section>"
     ].join("");
     var reserveButton = byId("reserveFromDetail");
