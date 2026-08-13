@@ -259,9 +259,34 @@ p {
   position: relative;
   min-height: 670px;
   overflow: hidden;
-  background: var(--navy-950) url("assets/pado-on-hero.png") center 56% / cover no-repeat;
+  background: var(--navy-950);
   color: white;
   isolation: isolate;
+}
+
+.hero-backgrounds,
+.hero-background {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-backgrounds {
+  z-index: -2;
+  background: var(--navy-950);
+}
+
+.hero-background {
+  opacity: 0;
+  background-position: center 56%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transform: scale(1.025);
+  transition: opacity 1400ms ease, transform 8s ease;
+}
+
+.hero-background.active {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .hero-shade {
@@ -1206,6 +1231,31 @@ p {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 24px;
+}
+
+.hero-slider-controls {
+  position: absolute;
+  right: max(24px, calc((100% - var(--max-width)) / 2));
+  bottom: 142px;
+  z-index: 2;
+  display: flex;
+  gap: 8px;
+}
+
+.hero-slider-controls button {
+  width: 9px;
+  height: 9px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.22);
+  cursor: pointer;
+  transition: width 250ms ease, background 250ms ease;
+}
+
+.hero-slider-controls button.active {
+  width: 27px;
+  background: #9feaf0;
 }
 
 .event-price strong {
@@ -3049,6 +3099,10 @@ p {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hero-background {
+    transform: none;
+    transition: none;
+  }
   html {
     scroll-behavior: auto;
   }

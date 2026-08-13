@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@600;700&family=Noto+Sans+KR:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="pado-on.css?v=20260812-events-v3">
+  <link rel="stylesheet" href="pado-on.css?v=20260813-hero-slider">
 </head>
 <body>
   <a class="skip-link" href="#main">본문으로 바로가기</a>
@@ -46,6 +46,12 @@
 
   <main id="main">
     <section class="hero" id="home" aria-labelledby="heroTitle">
+      <div class="hero-backgrounds" aria-hidden="true">
+        <div class="hero-background active" data-hero-background style="background-image: url('assets/pado-on-hero.png')"></div>
+        <div class="hero-background" data-hero-background style="background-image: url('assets/dadaepo-sunset.png')"></div>
+        <div class="hero-background" data-hero-background style="background-image: url('assets/summer-parasol.png')"></div>
+        <div class="hero-background" data-hero-background style="background-image: url('assets/winter-sunrise-contest.png')"></div>
+      </div>
       <div class="hero-shade"></div>
       <div class="hero-inner">
         <div class="hero-copy">
@@ -253,6 +259,12 @@
         <p>부산 바다에서 만난 특별한 순간을 첫 사진으로 남겨보세요.</p>
         <button class="button button-coral" type="button" data-open-story-form>첫 사진 올리기</button>
       </div>
+      <div class="hero-slider-controls" aria-label="첫 화면 배경 선택">
+        <button class="active" type="button" data-hero-slide="0" aria-label="광안대교 배경 보기" aria-pressed="true"></button>
+        <button type="button" data-hero-slide="1" aria-label="다대포 노을 배경 보기" aria-pressed="false"></button>
+        <button type="button" data-hero-slide="2" aria-label="해운대 파라솔 배경 보기" aria-pressed="false"></button>
+        <button type="button" data-hero-slide="3" aria-label="청사포 일출 배경 보기" aria-pressed="false"></button>
+      </div>
     </section>
 
     <section class="section account-section" aria-labelledby="accountTitle">
@@ -366,6 +378,6 @@
     <symbol id="icon-trash" viewBox="0 0 24 24"><path d="M4 7h16M9 7V4h6v3M7 7l1 13h8l1-13M10 11v5M14 11v5"/></symbol>
   </svg>
 
-  <script src="pado-on.js?v=20260812-events-v3"></script>
+  <script src="pado-on.js?v=20260813-hero-slider"></script>
 </body>
 </html>

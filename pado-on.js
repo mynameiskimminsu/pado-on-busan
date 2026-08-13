@@ -842,11 +842,48 @@
     mainNav.addEventListener("click", function (clickEvent) { if (clickEvent.target.closest("a")) { mainNav.classList.remove("open"); menuToggle.setAttribute("aria-expanded", "false"); } });
   }
 
+  function initHeroSlider() {
+    var slides = Array.from(document.querySelectorAll("[data-hero-background]"));
+    var controls = Array.from(document.querySelectorAll("[data-hero-slide]"));
+    if (slides.length < 2) return;
+    var activeIndex = 0;
+    var timer = null;
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    function showSlide(index) {
+      activeIndex = (index + slides.length) % slides.length;
+      slides.forEach(function (slide, slideIndex) { slide.classList.toggle("active", slideIndex === activeIndex); });
+      controls.forEach(function (control, controlIndex) {
+        var active = controlIndex === activeIndex;
+        control.classList.toggle("active", active);
+        control.setAttribute("aria-pressed", String(active));
+      });
+    }
+
+    function startAutoPlay() {
+      if (reduceMotion || document.hidden) return;
+      window.clearInterval(timer);
+      timer = window.setInterval(function () { showSlide(activeIndex + 1); }, 6500);
+    }
+
+    controls.forEach(function (control) {
+      control.addEventListener("click", function () {
+        showSlide(Number(control.getAttribute("data-hero-slide")) || 0);
+        startAutoPlay();
+      });
+    });
+    document.addEventListener("visibilitychange", function () {
+      window.clearInterval(timer);
+      if (!document.hidden) startAutoPlay();
+    });
+    startAutoPlay();
+  }
+
   function init() {
     if (!Array.isArray(bookings)) bookings = [copy(defaultBooking)];
     if (!wallet || typeof wallet.points !== "number") wallet = copy(defaultWallet);
     if (!Array.isArray(userStories)) userStories = [];
-    saveState(); renderSeason("summer"); renderEvents(); renderAllAccountData(); renderStories(); renderMyPhotos(); initInteractions();
+    saveState(); renderSeason("summer"); renderEvents(); renderAllAccountData(); renderStories(); renderMyPhotos(); initInteractions(); initHeroSlider();
   }
 
   document.addEventListener("DOMContentLoaded", init);
