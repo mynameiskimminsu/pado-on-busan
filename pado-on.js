@@ -870,6 +870,9 @@
 
   function init() {
     if (!Array.isArray(bookings)) bookings = [copy(defaultBooking)];
+    bookings = bookings.filter(function (booking) {
+      return !(booking.eventId === "dadaepo-spring-busking" && booking.status === "completed");
+    });
     if (!wallet || typeof wallet.points !== "number") wallet = copy(defaultWallet);
     if (!Array.isArray(userStories)) userStories = [];
     saveState(); renderSeason("summer"); renderEvents(); renderAllAccountData(); renderStories(); renderMyPhotos(); initInteractions(); initHeroSlider();
