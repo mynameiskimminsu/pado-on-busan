@@ -2464,6 +2464,9 @@ p {
 .point-barcode { margin-top: 16px; padding: 10px; border-radius: 8px; background: white; }
 .point-barcode span { display: block; height: 70px; background: repeating-linear-gradient(90deg,#061c27 0 2px,transparent 2px 5px,#061c27 5px 9px,transparent 9px 12px,#061c27 12px 13px,transparent 13px 17px); }
 .attendance-pending { cursor: default; color: var(--navy-700); background: #e7f6f7; }
+.usage-history-heading { margin-top: 24px; padding-top: 20px; border-top: 1px solid var(--line); }
+.usage-history-row strong { color: var(--coral-600); }
+.usage-history-row small { color: var(--muted); font-weight: 500; }
 
 .price-row.payment-total {
   margin-bottom: 0;
