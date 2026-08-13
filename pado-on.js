@@ -558,7 +558,7 @@
   function bookingActions(booking, event) {
     if (booking.status === "completed") return bookingStatus(booking, event) + '<span class="mini-action muted">+' + formatPoints(event.reward) + " SEA P 지급</span>";
     if (booking.status === "cancelled") return bookingStatus(booking, event);
-    return bookingStatus(booking, event) + '<button class="mini-action" type="button" data-complete-booking="' + escapeHtml(booking.id) + '">참여 완료 체험</button><button class="mini-action muted" type="button" data-cancel-booking="' + escapeHtml(booking.id) + '">' + (event.registrationOnly ? "신청 취소" : "예약 취소") + "</button>";
+    return bookingStatus(booking, event) + '<span class="mini-action attendance-pending">현장 확인 후 포인트 지급</span><button class="mini-action muted" type="button" data-cancel-booking="' + escapeHtml(booking.id) + '">' + (event.registrationOnly ? "신청 취소" : "예약 취소") + "</button>";
   }
 
   function renderBookings() {
@@ -603,18 +603,6 @@
   }
 
   function renderAllAccountData() { renderBookings(); renderRewards(); }
-
-  function completeBooking(bookingId) {
-    var booking = bookings.find(function (item) { return item.id === bookingId; });
-    if (!booking || booking.status !== "reserved" || booking.rewarded) return;
-    var event = getEvent(booking.eventId);
-    if (!event || !window.confirm("참여 완료 처리하고 " + formatPoints(event.reward) + " SEA 포인트를 받을까요?")) return;
-    booking.status = "completed"; booking.rewarded = true; booking.completedAt = new Date().toISOString();
-    wallet.points += event.reward;
-    if (!Array.isArray(wallet.history)) wallet.history = [];
-    wallet.history.unshift({ bookingId: booking.id, title: event.title + " 참여", points: event.reward, createdAt: booking.completedAt });
-    saveState(); renderAllAccountData(); renderEvents(); showToast(formatPoints(event.reward) + " SEA 포인트가 적립됐습니다.");
-  }
 
   function cancelBooking(bookingId) {
     var booking = bookings.find(function (item) { return item.id === bookingId; });
@@ -811,13 +799,11 @@
 
     document.body.addEventListener("click", function (clickEvent) {
       var openButton = clickEvent.target.closest("[data-open-event]");
-      var completeButton = clickEvent.target.closest("[data-complete-booking]");
       var cancelButton = clickEvent.target.closest("[data-cancel-booking]");
       var deleteButton = clickEvent.target.closest("[data-delete-story]");
       var editButton = clickEvent.target.closest("[data-edit-story]");
       var scrollButton = clickEvent.target.closest("[data-scroll]");
       if (openButton) openEvent(openButton.getAttribute("data-open-event"));
-      if (completeButton) completeBooking(completeButton.getAttribute("data-complete-booking"));
       if (cancelButton) cancelBooking(cancelButton.getAttribute("data-cancel-booking"));
       if (deleteButton) deleteStory(deleteButton.getAttribute("data-delete-story"));
       if (editButton) editStory(editButton.getAttribute("data-edit-story"));

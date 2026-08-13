@@ -2463,6 +2463,7 @@ p {
 .point-use-guide small { display: block; margin-top: 7px; color: #9cebf1; text-align: center; letter-spacing: .08em; }
 .point-barcode { margin-top: 16px; padding: 10px; border-radius: 8px; background: white; }
 .point-barcode span { display: block; height: 70px; background: repeating-linear-gradient(90deg,#061c27 0 2px,transparent 2px 5px,#061c27 5px 9px,transparent 9px 12px,#061c27 12px 13px,transparent 13px 17px); }
+.attendance-pending { cursor: default; color: var(--navy-700); background: #e7f6f7; }
 
 .price-row.payment-total {
   margin-bottom: 0;
