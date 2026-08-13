@@ -349,6 +349,12 @@
   function formatPoints(points) { return new Intl.NumberFormat("ko-KR").format(points); }
   function getEvent(id) { return events.find(function (event) { return event.id === id; }); }
 
+  function getFirstEventSchedule(event) {
+    return event.schedules.reduce(function (earliest, schedule) {
+      return !earliest || schedule.value < earliest ? schedule.value : earliest;
+    }, "");
+  }
+
   function getReservedCount(eventId, schedule) {
     return bookings.filter(function (booking) {
       return booking.eventId === eventId && booking.status === "reserved" && (!schedule || booking.schedule === schedule);
@@ -413,6 +419,9 @@
       return (activeSeasonFilter === "all" || event.season === activeSeasonFilter) &&
         (theme === "all" || event.themes.indexOf(theme) !== -1) &&
         (location === "all" || event.location === location);
+    }).sort(function (firstEvent, secondEvent) {
+      var dateDifference = getFirstEventSchedule(firstEvent).localeCompare(getFirstEventSchedule(secondEvent));
+      return dateDifference || firstEvent.title.localeCompare(secondEvent.title, "ko");
     });
     byId("eventCount").textContent = String(filtered.length);
     byId("eventGrid").innerHTML = filtered.map(eventCard).join("");
