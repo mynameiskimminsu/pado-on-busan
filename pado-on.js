@@ -635,7 +635,7 @@
   }
 
   function renderStories() {
-    byId("storyGrid").innerHTML = userStories.concat([exampleMyPhoto], defaultStories).map(storyCard).join("");
+    return;
   }
 
   function renderMyPhotos() {
@@ -668,9 +668,9 @@
     byId("storyImagePreview").src = "";
     byId("storyImagePreview").classList.add("hidden");
     byId("storyUploadPlaceholder").classList.remove("hidden");
-    byId("storyImageStatus").textContent = "사진은 게시 전에 브라우저에 맞게 압축됩니다.";
+    byId("storyImageStatus").textContent = "사진은 저장 전에 브라우저에 맞게 압축됩니다.";
     byId("storySubmit").disabled = false;
-    byId("storySubmit").textContent = "게시하기";
+    byId("storySubmit").textContent = "내 사진에 저장하기";
   }
 
   function editStory(storyId) {
@@ -690,7 +690,7 @@
     byId("storySubmit").textContent = "수정 저장하기";
     byId("storyFormShell").classList.remove("hidden");
     byId("openStoryForm").setAttribute("aria-expanded", "true");
-    byId("stories").scrollIntoView({ behavior: "smooth", block: "start" });
+    byId("my-photos").scrollIntoView({ behavior: "smooth", block: "start" });
     window.setTimeout(function () { byId("storyTitle").focus(); }, 350);
   }
 
@@ -764,7 +764,7 @@
   }
 
   function deleteStory(storyId) {
-    if (!window.confirm("이 바다 이야기를 삭제할까요?")) return;
+    if (!window.confirm("이 사진과 이야기를 삭제할까요?")) return;
     var nextStories = userStories.filter(function (story) { return story.id !== storyId; });
     if (saveStories(nextStories)) { renderStories(); renderMyPhotos(); showToast("사진이 삭제됐어요."); }
   }
@@ -801,7 +801,7 @@
     document.querySelectorAll("[data-open-story-form]").forEach(function (button) {
       button.addEventListener("click", function () {
         toggleStoryForm(true);
-        byId("stories").scrollIntoView({ behavior: "smooth", block: "start" });
+        byId("my-photos").scrollIntoView({ behavior: "smooth", block: "start" });
       });
     });
     byId("cancelStoryForm").addEventListener("click", function () { toggleStoryForm(false); });
