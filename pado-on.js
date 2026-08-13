@@ -93,12 +93,12 @@
     },
     {
       id: "dadaepo-clam-games", title: "다대포 바지락 캐기 & 갯벌 게임", season: "spring", location: "다대포",
-      venue: "다대포해수욕장 갯벌 체험존", category: "바다생태", dateNumber: "04.24", dateDay: "SAT", time: "10:00", duration: "120분", seats: 40, reward: 700, price: 35000,
+      venue: "다대포해수욕장 갯벌 체험존", category: "바다생태", dateNumber: "04.24", dateDay: "SAT", time: "16:00", duration: "4시간", seats: 40, reward: 700, price: 35000,
       image: "assets/spring-clam-game.png", imageAlt: "다대포 갯벌에서 바지락을 캐고 게임을 즐기는 가족과 여행자", themes: ["ecology"],
       tags: ["바지락 캐기", "팀 갯벌 게임", "장화·도구 제공"],
       schedules: [
-        { value: "2027-04-24T10:00", label: "2027년 4월 24일 (토) 10:00" },
-        { value: "2027-05-01T10:00", label: "2027년 5월 1일 (토) 10:00" }
+        { value: "2027-04-24T16:00", label: "2027년 4월 24일 (토) 16:00" },
+        { value: "2027-05-01T16:00", label: "2027년 5월 1일 (토) 16:00" }
       ],
       description: "호미로 바지락을 찾아보고 조별 릴레이와 깃발 찾기 게임을 즐기는 가족형 갯벌 체험입니다. 물때와 현장 안전 기준에 따라 프로그램이 조정될 수 있어요.",
       includes: ["장화·호미 대여", "안전요원 동행", "팀 미션 도구"]
@@ -165,10 +165,10 @@
     },
     {
       id: "dadaepo-spring-busking", title: "다대포 봄맞이 바다 버스킹", season: "spring", location: "다대포",
-      venue: "다대포해수욕장 해변공원", category: "사진·문화", dateNumber: "04.03", dateDay: "SAT", time: "16:00", duration: "120분", seats: 20, reward: 200, registrationOnly: true, capacityUnit: "팀", quantityUnit: "팀", maxPerBooking: 1,
+      venue: "다대포해수욕장 해변공원", category: "사진·문화", dateNumber: "05.05", dateDay: "WED", time: "16:00", duration: "120분", seats: 20, reward: 200, registrationOnly: true, capacityUnit: "팀", quantityUnit: "팀", maxPerBooking: 1,
       image: "assets/spring-busking.webp", imageAlt: "봄날 다대포 바다 앞 무대에서 공연하는 버스킹 팀과 관객들", themes: ["culture"],
       tags: ["무료 참가", "자유 관람", "참가 신청"],
-      schedules: [{ value: "2027-04-03T16:00", label: "2027년 4월 3일 (토) 16:00" }],
+      schedules: [{ value: "2027-05-05T16:00", label: "2027년 5월 5일 (수) 16:00" }],
       description: "봄바다를 배경으로 지역 뮤지션의 공연을 자유롭게 즐기는 무료 버스킹입니다. 누구나 현장에서 관람할 수 있고, 예약은 좌석 지정이 아닌 참가 신청을 받기 위한 절차입니다.",
       includes: ["자유 관람", "공연 일정 안내", "예약은 참가 신청 용도"]
     },
